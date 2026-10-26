@@ -476,9 +476,9 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", async () => {
-        // Fetch current data with 2-year offset (2026)
+        // Fetch current data with raw meter timestamps
         try {
-            const res = await fetch('/api/data?offset_years=2');
+            const res = await fetch('/api/data?offset_years=0');
             const data = await res.json();
             renderReport(data);
         } catch (err) {
