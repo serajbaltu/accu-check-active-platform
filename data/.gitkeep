@@ -1,0 +1,2 @@
+# This directory stores synchronized readings from Accu-Chek devices.
+# Real patient readings (last_sync.json) are kept private and excluded by .gitignore.

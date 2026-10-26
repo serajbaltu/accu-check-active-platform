@@ -1,0 +1,35 @@
+# Python Bytecode and cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environments
+.env
+.venv/
+venv/
+env/
+ENV/
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Operating System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Medical Privacy: NEVER commit real patient blood glucose records to Git
+data/*.json
+!data/sample_data.json
+data/last_sync.json
+
+# Temporary logs
+*.log

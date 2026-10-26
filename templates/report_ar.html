@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التقرير الطبي السريري لمراقبة سكر الدم | ACCU-CHEK Active</title>
+    <!-- Google Fonts: Cairo & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-page: #0D1117;
+            --bg-surface: #161B22;
+            --border-color: #30363D;
+            --text-main: #F0F6FC;
+            --text-muted: #8B949E;
+            --primary: #2563EB;
+            --emerald: #10B981;
+            --amber: #F59E0B;
+            --red: #EF4444;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Cairo', system-ui, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            padding: 24px;
+            line-height: 1.6;
+        }
+
+        .report-sheet {
+            max-width: 1040px;
+            margin: 0 auto;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 36px 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Top Action Bar (Print / Back) */
+        .action-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            font-family: inherit;
+            font-size: 13.5px;
+            font-weight: 600;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-primary {
+            background: #2563EB;
+            border-color: #2563EB;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1D4ED8;
+        }
+
+        /* Clinical Report Header */
+        .clinic-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 28px;
+            padding-bottom: 24px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .clinic-title h1 {
+            font-size: 24px;
+            font-weight: 800;
+            color: #60A5FA;
+            margin-bottom: 4px;
+        }
+
+        .clinic-title p {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .clinic-meta {
+            text-align: left;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .clinic-meta strong {
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Medical Disclaimer */
+        .disclaimer-box {
+            background: rgba(37, 99, 235, 0.08);
+            border-right: 4px solid #2563EB;
+            border-radius: 8px;
+            padding: 12px 18px;
+            margin-bottom: 24px;
+            font-size: 13px;
+            color: #93C5FD;
+        }
+
+        /* Metrics KPI Summary */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .metric-cell {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .metric-val {
+            font-size: 26px;
+            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-main);
+            line-height: 1.1;
+        }
+
+        .metric-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* Section Headings */
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin: 28px 0 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title i {
+            color: #60A5FA;
+        }
+
+        /* TIR Analysis Section */
+        .tir-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 28px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .tir-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .tir-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .tir-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .tir-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-left: 8px;
+        }
+
+        /* Timeline Chart Container */
+        .chart-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 28px;
+            height: 300px;
+            position: relative;
+        }
+
+        /* Logbook Table */
+        .table-box {
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 28px;
+        }
+
+        table.logbook {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            text-align: right;
+        }
+
+        table.logbook th {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px 14px;
+            font-weight: 700;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        table.logbook td {
+            padding: 9px 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .badge-target { background: rgba(16, 185, 129, 0.2); color: #34D399; }
+        .badge-hypo { background: rgba(239, 68, 68, 0.2); color: #F87171; }
+        .badge-hyper { background: rgba(245, 158, 11, 0.2); color: #FBBF24; }
+
+        /* Doctor Notes Section */
+        .notes-area {
+            border: 1px dashed var(--border-color);
+            border-radius: 10px;
+            padding: 18px;
+            margin-top: 24px;
+            min-height: 80px;
+        }
+
+        .notes-area h4 {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+                padding: 0;
+            }
+            .action-bar { display: none !important; }
+            .report-sheet {
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+            }
+            .disclaimer-box {
+                background: #f0f7ff !important;
+                color: #004085 !important;
+                border-right-color: #004085 !important;
+            }
+            .metric-cell, .tir-container, .chart-box, .table-box {
+                border-color: #ddd !important;
+                background: white !important;
+            }
+            .metric-val, .clinic-title h1, .section-title {
+                color: black !important;
+            }
+            table.logbook th {
+                background: #f5f5f5 !important;
+                color: black !important;
+            }
+            table.logbook td {
+                color: black !important;
+                border-bottom: 1px solid #eee !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="report-sheet">
+    <!-- Top Action Bar -->
+    <div class="action-bar">
+        <div>
+            <a href="/" class="btn"><i class="fa-solid fa-arrow-right"></i> العودة للوحة التحكم</a>
+        </div>
+        <div style="display: flex; gap: 10px;">
+            <button class="btn btn-primary" onclick="window.print()">
+                <i class="fa-solid fa-print"></i> طباعة / حفظ كـ PDF
+            </button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <div class="clinic-header">
+        <div class="clinic-title">
+            <h1>تقرير مراقبة وتحليل سكر الدم السريري</h1>
+            <p>مستخرج من جهاز <strong>Roche ACCU-CHEK Active</strong> عبر الاتصال الرقمي المباشر</p>
+        </div>
+        <div class="clinic-meta">
+            <div>طراز الجهاز: <strong id="repModel">2102</strong></div>
+            <div>الرقم التسلسلي: <strong id="repSerial">XXXXXXXXX</strong></div>
+            <div>تاريخ التقرير: <strong id="repDate">--</strong></div>
+            <div>إجمالي القياسات: <strong id="repCount">--</strong></div>
+        </div>
+    </div>
+
+    <!-- Medical Disclaimer -->
+    <div class="disclaimer-box">
+        <i class="fa-solid fa-circle-info"></i>
+        <strong>تنبيه طبي وسريري:</strong> هذا التقرير مخصص للمتابعة الطبية الذاتية وتحليل اتجاهات السكر، ولا يعتبر بديلاً عن التقييم السريري من قبل الطبيب المعالج. البيانات مستخرجة من جهاز قياس شعيري (SMBG)، والمؤشرات مثل GMI و TIR هي مؤشرات إحصائية استرشادية مبنية على توصيات الجمعية الأمريكية للسكري (ADA 2026).
+    </div>
+
+    <!-- Metrics Summary -->
+    <div class="metrics-grid">
+        <div class="metric-cell">
+            <div class="metric-label">إجمالي القياسات</div>
+            <div class="metric-val" id="metCount">--</div>
+            <div class="metric-sub">قراءة مسجلة</div>
+        </div>
+        <div class="metric-cell">
+            <div class="metric-label">متوسط السكر</div>
+            <div class="metric-val" id="metMean">--</div>
+            <div class="metric-sub" id="metMeanMmol">-- mmol/L</div>
+        </div>
+        <div class="metric-cell">
+            <div class="metric-label">التراكمي التقديري (GMI)</div>
+            <div class="metric-val" id="metGmi" style="color: #60A5FA;">--%</div>
+            <div class="metric-sub">Bergenstal et al.</div>
+        </div>
+        <div class="metric-cell">
+            <div class="metric-label">معامل التباين (CV)</div>
+            <div class="metric-val" id="metCv">--%</div>
+            <div class="metric-sub" id="metCvTarget">الهدف السريري &le; 36%</div>
+        </div>
+        <div class="metric-cell">
+            <div class="metric-label">ضمن النطاق (TIR)</div>
+            <div class="metric-val" id="metTir" style="color: #34D399;">--%</div>
+            <div class="metric-sub">70 - 180 mg/dL</div>
+        </div>
+        <div class="metric-cell">
+            <div class="metric-label">حالات الهبوط (Hypo)</div>
+            <div class="metric-val" id="metHypo" style="color: #F87171;">--</div>
+            <div class="metric-sub" id="metSevereHypo">-- هبوط حاد</div>
+        </div>
+    </div>
+
+    <!-- Section: TIR Analysis -->
+    <div class="section-title">
+        <i class="fa-solid fa-chart-pie"></i>
+        تحليل الوقت في النطاق السليم (Time in Range - Battelino 2019)
+    </div>
+
+    <div class="tir-container">
+        <div>
+            <table class="tir-table">
+                <tbody>
+                    <tr>
+                        <td><span class="tir-dot" style="background: #10B981;"></span> <strong>النطاق المستهدف السليم</strong> (70 - 180 mg/dL)</td>
+                        <td style="text-align: left; font-weight: 700; color: #34D399;" id="tirTargetVal">--</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tir-dot" style="background: #F97316;"></span> <strong>هبوط سكر خفيف</strong> (54 - 69 mg/dL)</td>
+                        <td style="text-align: left; font-weight: 700; color: #FDBA74;" id="tirLowVal">--</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tir-dot" style="background: #DC2626;"></span> <strong>هبوط سكر حاد جداً</strong> (&lt; 54 mg/dL)</td>
+                        <td style="text-align: left; font-weight: 700; color: #F87171;" id="tirVeryLowVal">--</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tir-dot" style="background: #F59E0B;"></span> <strong>ارتفاع سكر خفيف</strong> (181 - 250 mg/dL)</td>
+                        <td style="text-align: left; font-weight: 700; color: #FDE68A;" id="tirHighVal">--</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tir-dot" style="background: #991B1B;"></span> <strong>ارتفاع سكر حاد جداً</strong> (&gt; 250 mg/dL)</td>
+                        <td style="text-align: left; font-weight: 700; color: #FCA5A5;" id="tirVeryHighVal">--</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 180px; position: relative;">
+            <canvas id="repDonutChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Section: Timeline Trend -->
+    <div class="section-title">
+        <i class="fa-solid fa-chart-line"></i>
+        منحنى سكر الدم الزمني عبر فترة المتابعة (mg/dL)
+    </div>
+    <div class="chart-box">
+        <canvas id="repTimelineChart"></canvas>
+    </div>
+
+    <!-- Section: Recent Logbook -->
+    <div class="section-title">
+        <i class="fa-solid fa-list-check"></i>
+        سجل القراءات التفصيلي المسجل بالجهاز
+    </div>
+    <div class="table-box">
+        <table class="logbook">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>التاريخ والوقت</th>
+                    <th>القراءة (mg/dL)</th>
+                    <th>القراءة (mmol/L)</th>
+                    <th>الحالة السريرية</th>
+                </tr>
+            </thead>
+            <tbody id="repTableBody">
+                <tr><td colspan="5" style="text-align: center; padding: 20px;">جاري تحميل القراءات...</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Doctor Notes Area -->
+    <div class="notes-area">
+        <h4>ملاحظات وتوجيهات الطبيب المعالج / خطة العلاج:</h4>
+        <p style="color: var(--text-muted); font-size: 13px;">..........................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................</p>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", async () => {
+        // Fetch current data with 2-year offset (2026)
+        try {
+            const res = await fetch('/api/data?offset_years=2');
+            const data = await res.json();
+            renderReport(data);
+        } catch (err) {
+            console.error("Report fetch error:", err);
+        }
+    });
+
+    function renderReport(data) {
+        const dev = data.device || {};
+        const stats = data.analytics || {};
+        const records = data.records || [];
+
+        // Meta
+        document.getElementById('repModel').textContent = dev.model || 'Accu-Chek Active';
+        document.getElementById('repSerial').textContent = dev.serial || 'XXXXXXXXX';
+        document.getElementById('repDate').textContent = new Date().toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' });
+        document.getElementById('repCount').textContent = records.length;
+
+        // Metrics
+        document.getElementById('metCount').textContent = stats.total_count || 0;
+        document.getElementById('metMean').textContent = stats.mean_mg_dl || 0;
+        document.getElementById('metMeanMmol').textContent = `${stats.mean_mmol_l || 0} mmol/L`;
+        document.getElementById('metGmi').textContent = `${stats.gmi_percent || 0}%`;
+        document.getElementById('metCv').textContent = `${stats.cv_percent || 0}%`;
+        
+        const cvTarget = document.getElementById('metCvTarget');
+        if (stats.cv_target_met) {
+            cvTarget.textContent = 'مستقر سريرياً (≤ 36%)';
+            cvTarget.style.color = '#34D399';
+        } else {
+            cvTarget.textContent = 'تذبذب عالي (> 36%)';
+            cvTarget.style.color = '#F87171';
+        }
+
+        const tir = stats.tir || {};
+        const tirPct = stats.tir_percentages || {};
+        document.getElementById('metTir').textContent = `${tirPct.in_range || 0}%`;
+        document.getElementById('metHypo').textContent = stats.hypo_count || 0;
+        document.getElementById('metSevereHypo').textContent = `${stats.severe_hypo_count || 0} هبوط حاد`;
+
+        // TIR values
+        document.getElementById('tirTargetVal').textContent = `${tirPct.in_range || 0}% (${tir.in_range || 0})`;
+        document.getElementById('tirLowVal').textContent = `${tirPct.low || 0}% (${tir.low || 0})`;
+        document.getElementById('tirVeryLowVal').textContent = `${tirPct.very_low || 0}% (${tir.very_low || 0})`;
+        document.getElementById('tirHighVal').textContent = `${tirPct.high || 0}% (${tir.high || 0})`;
+        document.getElementById('tirVeryHighVal').textContent = `${tirPct.very_high || 0}% (${tir.very_high || 0})`;
+
+        // Donut Chart
+        const ctxDonut = document.getElementById('repDonutChart').getContext('2d');
+        new Chart(ctxDonut, {
+            type: 'doughnut',
+            data: {
+                labels: ['ضمن الهدف', 'هبوط خفيف', 'هبوط حاد', 'ارتفاع خفيف', 'ارتفاع حاد'],
+                datasets: [{
+                    data: [tir.in_range || 0, tir.low || 0, tir.very_low || 0, tir.high || 0, tir.very_high || 0],
+                    backgroundColor: ['#10B981', '#F97316', '#DC2626', '#F59E0B', '#991B1B'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: { legend: { display: false } }
+            }
+        });
+
+        // Timeline Chart: sort by true memory index sequence
+        const sorted = [...records].sort((a, b) => (a.index ?? 0) - (b.index ?? 0));
+        const labels = sorted.map(r => {
+            const dt = new Date(r.timestamp);
+            return dt.toLocaleDateString('ar-EG', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+        });
+        const vals = sorted.map(r => r.mg_dL);
+        const pointColors = vals.map(v => {
+            if (v < 54) return '#DC2626';
+            if (v < 70) return '#F97316';
+            if (v <= 180) return '#10B981';
+            if (v <= 250) return '#F59E0B';
+            return '#991B1B';
+        });
+
+        const ctxTimeline = document.getElementById('repTimelineChart').getContext('2d');
+        new Chart(ctxTimeline, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: vals,
+                    borderColor: '#3B82F6',
+                    borderWidth: 2,
+                    pointBackgroundColor: pointColors,
+                    pointRadius: 4,
+                    tension: 0.2,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { ticks: { maxTicksLimit: 12, color: '#8B949E' }, grid: { display: false } },
+                    y: { min: 40, max: Math.max(...vals, 260) + 20, ticks: { color: '#8B949E' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+                }
+            }
+        });
+
+        // Logbook: sort by true memory index descending (newest tests first)
+        const descSorted = [...records].sort((a, b) => (b.index ?? 0) - (a.index ?? 0));
+        const tbody = document.getElementById('repTableBody');
+        tbody.innerHTML = descSorted.map(r => {
+            const dt = new Date(r.timestamp);
+            const dateStr = dt.toLocaleDateString('ar-EG', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+            let badgeHtml = '<span class="badge badge-target">ضمن النطاق</span>';
+            if (r.mg_dL < 70) badgeHtml = '<span class="badge badge-hypo">هبوط</span>';
+            else if (r.mg_dL > 180) badgeHtml = '<span class="badge badge-hyper">ارتفاع</span>';
+
+            return `
+                <tr>
+                    <td style="font-family: 'Outfit'; font-weight: 600; color: var(--text-muted);">${r.index}</td>
+                    <td><strong>${dateStr}</strong></td>
+                    <td style="font-family: 'Outfit'; font-size: 15px; font-weight: 800;">${r.mg_dL}</td>
+                    <td style="font-family: 'Outfit'; color: var(--text-muted);">${r.mmol_L}</td>
+                    <td>${badgeHtml}</td>
+                </tr>
+            `;
+        }).join('');
+    }
+</script>
+
+</body>
+</html>

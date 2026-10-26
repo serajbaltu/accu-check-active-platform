@@ -1,0 +1,21 @@
+# Regra udev — Accu-Chek Active (Roche) 173a:21cc
+#
+# O /dev/bus/usb/XXX/YYY é criado pelo udev com owner root:root e sem ACL de
+# escrita para o usuário comum. Sem esta regra, o cliente Python precisa de
+# sudo. Com ela, basta estar no grupo "plugdev".
+#
+# Instalação (raiz):
+#     sudo cp udev/99-accuchek.rules /etc/udev/rules.d/
+#     sudo udevadm control --reload-rules
+#     sudo udevadm trigger --subsystem-match=usb --action=add
+#
+# Removendo:
+#     sudo rm /etc/udev/rules.d/99-accuchek.rules
+#     sudo udevadm control --reload-rules
+
+# O VID/PID do Accu-Chek Active USB. Concede leitura e escrita no device node.
+SUBSYSTEM=="usb", ATTR{idVendor}=="173a", ATTR{idProduct}=="21cc", MODE="0660", GROUP="plugdev", TAG+="uaccess"
+
+# Mesma coisa, casando pelo nome do produto (alguns firmwares reportam outro
+# idProduct para o mesmo aparelho — útil para depurar).
+SUBSYSTEM=="usb", ATTR{product}=="Accu-Chek Active USB", MODE="0660", GROUP="plugdev", TAG+="uaccess"

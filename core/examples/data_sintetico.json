@@ -1,0 +1,981 @@
+{
+  "device": {
+    "vendor_id": 5946,
+    "product_id": 8652,
+    "model": "2102",
+    "serial": "XXXXXXXXX",
+    "device_time": "2024-12-01T09:15:00"
+  },
+  "read_at": "2024-12-01T09:30:00",
+  "count": 121,
+  "records": [
+    {
+      "index": 0,
+      "timestamp": "2024-01-01T07:46:49",
+      "epoch": 1704106009,
+      "mg/dL": 114,
+      "mmol/L": 6.327,
+      "status": 0
+    },
+    {
+      "index": 1,
+      "timestamp": "2024-01-01T23:04:44",
+      "epoch": 1704161084,
+      "mg/dL": 134,
+      "mmol/L": 7.437,
+      "status": 0
+    },
+    {
+      "index": 2,
+      "timestamp": "2024-01-06T06:39:20",
+      "epoch": 1704533960,
+      "mg/dL": 135,
+      "mmol/L": 7.492,
+      "status": 0
+    },
+    {
+      "index": 3,
+      "timestamp": "2024-01-06T23:11:02",
+      "epoch": 1704593462,
+      "mg/dL": 130,
+      "mmol/L": 7.215,
+      "status": 0
+    },
+    {
+      "index": 4,
+      "timestamp": "2024-01-07T07:33:23",
+      "epoch": 1704623603,
+      "mg/dL": 112,
+      "mmol/L": 6.216,
+      "status": 0
+    },
+    {
+      "index": 5,
+      "timestamp": "2024-01-07T18:35:13",
+      "epoch": 1704663313,
+      "mg/dL": 100,
+      "mmol/L": 5.55,
+      "status": 0
+    },
+    {
+      "index": 6,
+      "timestamp": "2024-01-08T06:03:52",
+      "epoch": 1704704632,
+      "mg/dL": 143,
+      "mmol/L": 7.936,
+      "status": 0
+    },
+    {
+      "index": 7,
+      "timestamp": "2024-01-08T19:13:11",
+      "epoch": 1704751991,
+      "mg/dL": 130,
+      "mmol/L": 7.215,
+      "status": 0
+    },
+    {
+      "index": 8,
+      "timestamp": "2024-01-10T21:55:27",
+      "epoch": 1704934527,
+      "mg/dL": 161,
+      "mmol/L": 8.935,
+      "status": 0
+    },
+    {
+      "index": 9,
+      "timestamp": "2024-01-26T06:32:23",
+      "epoch": 1706261543,
+      "mg/dL": 139,
+      "mmol/L": 7.714,
+      "status": 0
+    },
+    {
+      "index": 10,
+      "timestamp": "2024-01-26T09:03:09",
+      "epoch": 1706270589,
+      "mg/dL": 132,
+      "mmol/L": 7.326,
+      "status": 0
+    },
+    {
+      "index": 11,
+      "timestamp": "2024-01-26T22:24:15",
+      "epoch": 1706318655,
+      "mg/dL": 141,
+      "mmol/L": 7.825,
+      "status": 0
+    },
+    {
+      "index": 12,
+      "timestamp": "2024-01-28T05:29:56",
+      "epoch": 1706430596,
+      "mg/dL": 100,
+      "mmol/L": 5.55,
+      "status": 0
+    },
+    {
+      "index": 13,
+      "timestamp": "2024-01-28T20:41:20",
+      "epoch": 1706485280,
+      "mg/dL": 148,
+      "mmol/L": 8.214,
+      "status": 0
+    },
+    {
+      "index": 14,
+      "timestamp": "2024-01-29T07:45:41",
+      "epoch": 1706525141,
+      "mg/dL": 131,
+      "mmol/L": 7.27,
+      "status": 0
+    },
+    {
+      "index": 15,
+      "timestamp": "2024-01-29T23:16:33",
+      "epoch": 1706580993,
+      "mg/dL": 152,
+      "mmol/L": 8.436,
+      "status": 0
+    },
+    {
+      "index": 16,
+      "timestamp": "2024-02-01T23:45:13",
+      "epoch": 1706841913,
+      "mg/dL": 145,
+      "mmol/L": 8.047,
+      "status": 0
+    },
+    {
+      "index": 17,
+      "timestamp": "2024-02-13T06:07:06",
+      "epoch": 1707815226,
+      "mg/dL": 47,
+      "mmol/L": 2.608,
+      "status": 0
+    },
+    {
+      "index": 18,
+      "timestamp": "2024-02-13T22:49:44",
+      "epoch": 1707875384,
+      "mg/dL": 143,
+      "mmol/L": 7.936,
+      "status": 0
+    },
+    {
+      "index": 19,
+      "timestamp": "2024-02-16T09:24:21",
+      "epoch": 1708086261,
+      "mg/dL": 101,
+      "mmol/L": 5.605,
+      "status": 0
+    },
+    {
+      "index": 20,
+      "timestamp": "2024-02-16T12:33:16",
+      "epoch": 1708097596,
+      "mg/dL": 130,
+      "mmol/L": 7.215,
+      "status": 0
+    },
+    {
+      "index": 21,
+      "timestamp": "2024-02-16T22:07:53",
+      "epoch": 1708132073,
+      "mg/dL": 162,
+      "mmol/L": 8.991,
+      "status": 0
+    },
+    {
+      "index": 22,
+      "timestamp": "2024-02-18T05:24:12",
+      "epoch": 1708244652,
+      "mg/dL": 72,
+      "mmol/L": 3.996,
+      "status": 0
+    },
+    {
+      "index": 23,
+      "timestamp": "2024-02-21T07:42:24",
+      "epoch": 1708512144,
+      "mg/dL": 127,
+      "mmol/L": 7.048,
+      "status": 0
+    },
+    {
+      "index": 24,
+      "timestamp": "2024-02-21T22:07:00",
+      "epoch": 1708564020,
+      "mg/dL": 144,
+      "mmol/L": 7.992,
+      "status": 0
+    },
+    {
+      "index": 25,
+      "timestamp": "2024-02-22T09:38:50",
+      "epoch": 1708605530,
+      "mg/dL": 139,
+      "mmol/L": 7.714,
+      "status": 0
+    },
+    {
+      "index": 26,
+      "timestamp": "2024-02-22T11:45:57",
+      "epoch": 1708613157,
+      "mg/dL": 178,
+      "mmol/L": 9.879,
+      "status": 0
+    },
+    {
+      "index": 27,
+      "timestamp": "2024-02-22T18:03:47",
+      "epoch": 1708635827,
+      "mg/dL": 135,
+      "mmol/L": 7.492,
+      "status": 0
+    },
+    {
+      "index": 28,
+      "timestamp": "2024-02-24T08:14:09",
+      "epoch": 1708773249,
+      "mg/dL": 133,
+      "mmol/L": 7.381,
+      "status": 0
+    },
+    {
+      "index": 29,
+      "timestamp": "2024-02-24T21:28:30",
+      "epoch": 1708820910,
+      "mg/dL": 142,
+      "mmol/L": 7.881,
+      "status": 0
+    },
+    {
+      "index": 30,
+      "timestamp": "2024-02-25T06:27:57",
+      "epoch": 1708853277,
+      "mg/dL": 145,
+      "mmol/L": 8.047,
+      "status": 0
+    },
+    {
+      "index": 31,
+      "timestamp": "2024-02-28T07:38:04",
+      "epoch": 1709116684,
+      "mg/dL": 100,
+      "mmol/L": 5.55,
+      "status": 0
+    },
+    {
+      "index": 32,
+      "timestamp": "2024-02-28T21:09:47",
+      "epoch": 1709165387,
+      "mg/dL": 132,
+      "mmol/L": 7.326,
+      "status": 0
+    },
+    {
+      "index": 33,
+      "timestamp": "2024-03-01T06:42:55",
+      "epoch": 1709286175,
+      "mg/dL": 96,
+      "mmol/L": 5.328,
+      "status": 0
+    },
+    {
+      "index": 34,
+      "timestamp": "2024-03-01T23:39:07",
+      "epoch": 1709347147,
+      "mg/dL": 125,
+      "mmol/L": 6.937,
+      "status": 0
+    },
+    {
+      "index": 35,
+      "timestamp": "2024-03-02T08:35:52",
+      "epoch": 1709379352,
+      "mg/dL": 152,
+      "mmol/L": 8.436,
+      "status": 0
+    },
+    {
+      "index": 36,
+      "timestamp": "2024-03-02T11:36:05",
+      "epoch": 1709390165,
+      "mg/dL": 155,
+      "mmol/L": 8.602,
+      "status": 0
+    },
+    {
+      "index": 37,
+      "timestamp": "2024-03-02T20:14:43",
+      "epoch": 1709421283,
+      "mg/dL": 196,
+      "mmol/L": 10.878,
+      "status": 0
+    },
+    {
+      "index": 38,
+      "timestamp": "2024-03-13T11:25:23",
+      "epoch": 1710339923,
+      "mg/dL": 148,
+      "mmol/L": 8.214,
+      "status": 0
+    },
+    {
+      "index": 39,
+      "timestamp": "2024-03-13T18:07:37",
+      "epoch": 1710364057,
+      "mg/dL": 95,
+      "mmol/L": 5.272,
+      "status": 0
+    },
+    {
+      "index": 40,
+      "timestamp": "2024-03-19T09:43:37",
+      "epoch": 1710852217,
+      "mg/dL": 157,
+      "mmol/L": 8.713,
+      "status": 0
+    },
+    {
+      "index": 41,
+      "timestamp": "2024-03-19T12:07:14",
+      "epoch": 1710860834,
+      "mg/dL": 97,
+      "mmol/L": 5.383,
+      "status": 0
+    },
+    {
+      "index": 42,
+      "timestamp": "2024-03-19T22:51:17",
+      "epoch": 1710899477,
+      "mg/dL": 157,
+      "mmol/L": 8.713,
+      "status": 0
+    },
+    {
+      "index": 43,
+      "timestamp": "2024-03-21T08:20:28",
+      "epoch": 1711020028,
+      "mg/dL": 139,
+      "mmol/L": 7.714,
+      "status": 0
+    },
+    {
+      "index": 44,
+      "timestamp": "2024-03-21T19:38:43",
+      "epoch": 1711060723,
+      "mg/dL": 96,
+      "mmol/L": 5.328,
+      "status": 0
+    },
+    {
+      "index": 45,
+      "timestamp": "2024-03-28T07:17:37",
+      "epoch": 1711621057,
+      "mg/dL": 110,
+      "mmol/L": 6.105,
+      "status": 0
+    },
+    {
+      "index": 46,
+      "timestamp": "2024-03-28T19:06:10",
+      "epoch": 1711663570,
+      "mg/dL": 120,
+      "mmol/L": 6.66,
+      "status": 0
+    },
+    {
+      "index": 47,
+      "timestamp": "2024-04-01T07:20:25",
+      "epoch": 1711966825,
+      "mg/dL": 93,
+      "mmol/L": 5.161,
+      "status": 0
+    },
+    {
+      "index": 48,
+      "timestamp": "2024-04-01T19:28:01",
+      "epoch": 1712010481,
+      "mg/dL": 121,
+      "mmol/L": 6.715,
+      "status": 0
+    },
+    {
+      "index": 49,
+      "timestamp": "2024-04-14T06:41:15",
+      "epoch": 1713087675,
+      "mg/dL": 128,
+      "mmol/L": 7.104,
+      "status": 0
+    },
+    {
+      "index": 50,
+      "timestamp": "2024-04-14T09:09:52",
+      "epoch": 1713096592,
+      "mg/dL": 110,
+      "mmol/L": 6.105,
+      "status": 0
+    },
+    {
+      "index": 51,
+      "timestamp": "2024-04-14T18:34:41",
+      "epoch": 1713130481,
+      "mg/dL": 115,
+      "mmol/L": 6.382,
+      "status": 0
+    },
+    {
+      "index": 52,
+      "timestamp": "2024-04-20T06:35:49",
+      "epoch": 1713605749,
+      "mg/dL": 123,
+      "mmol/L": 6.826,
+      "status": 0
+    },
+    {
+      "index": 53,
+      "timestamp": "2024-04-29T08:07:06",
+      "epoch": 1714388826,
+      "mg/dL": 130,
+      "mmol/L": 7.215,
+      "status": 0
+    },
+    {
+      "index": 54,
+      "timestamp": "2024-04-29T11:11:27",
+      "epoch": 1714399887,
+      "mg/dL": 163,
+      "mmol/L": 9.046,
+      "status": 0
+    },
+    {
+      "index": 55,
+      "timestamp": "2024-04-29T21:37:31",
+      "epoch": 1714437451,
+      "mg/dL": 169,
+      "mmol/L": 9.379,
+      "status": 0
+    },
+    {
+      "index": 56,
+      "timestamp": "2024-05-09T07:09:42",
+      "epoch": 1715249382,
+      "mg/dL": 108,
+      "mmol/L": 5.994,
+      "status": 0
+    },
+    {
+      "index": 57,
+      "timestamp": "2024-05-09T10:44:38",
+      "epoch": 1715262278,
+      "mg/dL": 77,
+      "mmol/L": 4.273,
+      "status": 0
+    },
+    {
+      "index": 58,
+      "timestamp": "2024-05-09T21:34:53",
+      "epoch": 1715301293,
+      "mg/dL": 90,
+      "mmol/L": 4.995,
+      "status": 0
+    },
+    {
+      "index": 59,
+      "timestamp": "2024-05-12T08:33:22",
+      "epoch": 1715513602,
+      "mg/dL": 150,
+      "mmol/L": 8.325,
+      "status": 0
+    },
+    {
+      "index": 60,
+      "timestamp": "2024-05-12T10:30:05",
+      "epoch": 1715520605,
+      "mg/dL": 166,
+      "mmol/L": 9.213,
+      "status": 0
+    },
+    {
+      "index": 61,
+      "timestamp": "2024-05-23T05:24:55",
+      "epoch": 1716452695,
+      "mg/dL": 112,
+      "mmol/L": 6.216,
+      "status": 0
+    },
+    {
+      "index": 62,
+      "timestamp": "2024-05-23T23:11:49",
+      "epoch": 1716516709,
+      "mg/dL": 114,
+      "mmol/L": 6.327,
+      "status": 0
+    },
+    {
+      "index": 63,
+      "timestamp": "2024-06-04T06:06:49",
+      "epoch": 1717492009,
+      "mg/dL": 133,
+      "mmol/L": 7.381,
+      "status": 0
+    },
+    {
+      "index": 64,
+      "timestamp": "2024-06-04T08:19:16",
+      "epoch": 1717499956,
+      "mg/dL": 58,
+      "mmol/L": 3.219,
+      "status": 0
+    },
+    {
+      "index": 65,
+      "timestamp": "2024-06-04T23:58:24",
+      "epoch": 1717556304,
+      "mg/dL": 142,
+      "mmol/L": 7.881,
+      "status": 0
+    },
+    {
+      "index": 66,
+      "timestamp": "2024-06-06T05:09:28",
+      "epoch": 1717661368,
+      "mg/dL": 117,
+      "mmol/L": 6.493,
+      "status": 0
+    },
+    {
+      "index": 67,
+      "timestamp": "2024-06-06T21:02:39",
+      "epoch": 1717718559,
+      "mg/dL": 161,
+      "mmol/L": 8.935,
+      "status": 0
+    },
+    {
+      "index": 68,
+      "timestamp": "2024-06-09T09:11:18",
+      "epoch": 1717935078,
+      "mg/dL": 170,
+      "mmol/L": 9.435,
+      "status": 0
+    },
+    {
+      "index": 69,
+      "timestamp": "2024-07-02T09:17:16",
+      "epoch": 1719922636,
+      "mg/dL": 88,
+      "mmol/L": 4.884,
+      "status": 0
+    },
+    {
+      "index": 70,
+      "timestamp": "2024-07-02T12:05:03",
+      "epoch": 1719932703,
+      "mg/dL": 145,
+      "mmol/L": 8.047,
+      "status": 0
+    },
+    {
+      "index": 71,
+      "timestamp": "2024-07-02T22:48:20",
+      "epoch": 1719971300,
+      "mg/dL": 148,
+      "mmol/L": 8.214,
+      "status": 0
+    },
+    {
+      "index": 72,
+      "timestamp": "2024-07-06T09:54:33",
+      "epoch": 1720270473,
+      "mg/dL": 201,
+      "mmol/L": 11.155,
+      "status": 0
+    },
+    {
+      "index": 73,
+      "timestamp": "2024-07-06T23:15:56",
+      "epoch": 1720318556,
+      "mg/dL": 124,
+      "mmol/L": 6.882,
+      "status": 0
+    },
+    {
+      "index": 74,
+      "timestamp": "2024-07-14T09:57:37",
+      "epoch": 1720961857,
+      "mg/dL": 137,
+      "mmol/L": 7.603,
+      "status": 0
+    },
+    {
+      "index": 75,
+      "timestamp": "2024-07-14T18:35:02",
+      "epoch": 1720992902,
+      "mg/dL": 97,
+      "mmol/L": 5.383,
+      "status": 0
+    },
+    {
+      "index": 76,
+      "timestamp": "2024-07-15T11:33:32",
+      "epoch": 1721054012,
+      "mg/dL": 139,
+      "mmol/L": 7.714,
+      "status": 0
+    },
+    {
+      "index": 77,
+      "timestamp": "2024-07-15T23:10:16",
+      "epoch": 1721095816,
+      "mg/dL": 152,
+      "mmol/L": 8.436,
+      "status": 0
+    },
+    {
+      "index": 78,
+      "timestamp": "2024-07-16T06:31:05",
+      "epoch": 1721122265,
+      "mg/dL": 128,
+      "mmol/L": 7.104,
+      "status": 0
+    },
+    {
+      "index": 79,
+      "timestamp": "2024-07-16T08:38:02",
+      "epoch": 1721129882,
+      "mg/dL": 140,
+      "mmol/L": 7.77,
+      "status": 0
+    },
+    {
+      "index": 80,
+      "timestamp": "2024-07-16T21:13:12",
+      "epoch": 1721175192,
+      "mg/dL": 78,
+      "mmol/L": 4.329,
+      "status": 0
+    },
+    {
+      "index": 81,
+      "timestamp": "2024-07-21T08:25:31",
+      "epoch": 1721561131,
+      "mg/dL": 111,
+      "mmol/L": 6.16,
+      "status": 0
+    },
+    {
+      "index": 82,
+      "timestamp": "2024-07-21T20:08:05",
+      "epoch": 1721603285,
+      "mg/dL": 145,
+      "mmol/L": 8.047,
+      "status": 0
+    },
+    {
+      "index": 83,
+      "timestamp": "2024-07-23T05:21:02",
+      "epoch": 1721722862,
+      "mg/dL": 109,
+      "mmol/L": 6.049,
+      "status": 0
+    },
+    {
+      "index": 84,
+      "timestamp": "2024-07-26T07:49:31",
+      "epoch": 1721990971,
+      "mg/dL": 121,
+      "mmol/L": 6.715,
+      "status": 0
+    },
+    {
+      "index": 85,
+      "timestamp": "2024-07-26T10:56:17",
+      "epoch": 1722002177,
+      "mg/dL": 125,
+      "mmol/L": 6.937,
+      "status": 0
+    },
+    {
+      "index": 86,
+      "timestamp": "2024-07-26T23:59:08",
+      "epoch": 1722049148,
+      "mg/dL": 150,
+      "mmol/L": 8.325,
+      "status": 0
+    },
+    {
+      "index": 87,
+      "timestamp": "2024-07-28T05:48:37",
+      "epoch": 1722156517,
+      "mg/dL": 133,
+      "mmol/L": 7.381,
+      "status": 0
+    },
+    {
+      "index": 88,
+      "timestamp": "2024-07-28T22:52:32",
+      "epoch": 1722217952,
+      "mg/dL": 118,
+      "mmol/L": 6.549,
+      "status": 0
+    },
+    {
+      "index": 89,
+      "timestamp": "2024-08-05T06:43:55",
+      "epoch": 1722851035,
+      "mg/dL": 137,
+      "mmol/L": 7.603,
+      "status": 0
+    },
+    {
+      "index": 90,
+      "timestamp": "2024-08-05T22:47:28",
+      "epoch": 1722908848,
+      "mg/dL": 139,
+      "mmol/L": 7.714,
+      "status": 0
+    },
+    {
+      "index": 91,
+      "timestamp": "2024-08-24T08:33:31",
+      "epoch": 1724499211,
+      "mg/dL": 110,
+      "mmol/L": 6.105,
+      "status": 0
+    },
+    {
+      "index": 92,
+      "timestamp": "2024-08-24T19:13:58",
+      "epoch": 1724537638,
+      "mg/dL": 61,
+      "mmol/L": 3.385,
+      "status": 0
+    },
+    {
+      "index": 93,
+      "timestamp": "2024-09-03T08:06:05",
+      "epoch": 1725361565,
+      "mg/dL": 137,
+      "mmol/L": 7.603,
+      "status": 0
+    },
+    {
+      "index": 94,
+      "timestamp": "2024-09-03T11:04:59",
+      "epoch": 1725372299,
+      "mg/dL": 176,
+      "mmol/L": 9.768,
+      "status": 0
+    },
+    {
+      "index": 95,
+      "timestamp": "2024-09-03T23:11:22",
+      "epoch": 1725415882,
+      "mg/dL": 133,
+      "mmol/L": 7.381,
+      "status": 0
+    },
+    {
+      "index": 96,
+      "timestamp": "2024-09-27T05:50:33",
+      "epoch": 1727427033,
+      "mg/dL": 96,
+      "mmol/L": 5.328,
+      "status": 0
+    },
+    {
+      "index": 97,
+      "timestamp": "2024-09-27T23:32:59",
+      "epoch": 1727490779,
+      "mg/dL": 144,
+      "mmol/L": 7.992,
+      "status": 0
+    },
+    {
+      "index": 98,
+      "timestamp": "2024-10-06T09:14:52",
+      "epoch": 1728216892,
+      "mg/dL": 147,
+      "mmol/L": 8.158,
+      "status": 0
+    },
+    {
+      "index": 99,
+      "timestamp": "2024-10-06T19:00:45",
+      "epoch": 1728252045,
+      "mg/dL": 198,
+      "mmol/L": 10.989,
+      "status": 0
+    },
+    {
+      "index": 100,
+      "timestamp": "2024-10-12T07:24:30",
+      "epoch": 1728728670,
+      "mg/dL": 117,
+      "mmol/L": 6.493,
+      "status": 0
+    },
+    {
+      "index": 101,
+      "timestamp": "2024-10-12T09:49:34",
+      "epoch": 1728737374,
+      "mg/dL": 118,
+      "mmol/L": 6.549,
+      "status": 0
+    },
+    {
+      "index": 102,
+      "timestamp": "2024-10-12T22:01:01",
+      "epoch": 1728781261,
+      "mg/dL": 116,
+      "mmol/L": 6.438,
+      "status": 0
+    },
+    {
+      "index": 103,
+      "timestamp": "2024-10-15T09:40:18",
+      "epoch": 1728996018,
+      "mg/dL": 146,
+      "mmol/L": 8.103,
+      "status": 0
+    },
+    {
+      "index": 104,
+      "timestamp": "2024-10-15T19:50:07",
+      "epoch": 1729032607,
+      "mg/dL": 203,
+      "mmol/L": 11.266,
+      "status": 0
+    },
+    {
+      "index": 105,
+      "timestamp": "2024-10-17T08:17:38",
+      "epoch": 1729163858,
+      "mg/dL": 124,
+      "mmol/L": 6.882,
+      "status": 0
+    },
+    {
+      "index": 106,
+      "timestamp": "2024-10-24T01:15:03",
+      "epoch": 1729743303,
+      "mg/dL": 71,
+      "mmol/L": 3.94,
+      "status": 0
+    },
+    {
+      "index": 107,
+      "timestamp": "2024-10-27T07:16:36",
+      "epoch": 1730024196,
+      "mg/dL": 109,
+      "mmol/L": 6.049,
+      "status": 0
+    },
+    {
+      "index": 108,
+      "timestamp": "2024-10-27T22:32:47",
+      "epoch": 1730079167,
+      "mg/dL": 76,
+      "mmol/L": 4.218,
+      "status": 0
+    },
+    {
+      "index": 109,
+      "timestamp": "2024-10-28T06:05:34",
+      "epoch": 1730106334,
+      "mg/dL": 121,
+      "mmol/L": 6.715,
+      "status": 0
+    },
+    {
+      "index": 110,
+      "timestamp": "2024-10-28T20:27:20",
+      "epoch": 1730158040,
+      "mg/dL": 65,
+      "mmol/L": 3.607,
+      "status": 0
+    },
+    {
+      "index": 111,
+      "timestamp": "2024-11-15T07:17:36",
+      "epoch": 1731665856,
+      "mg/dL": 125,
+      "mmol/L": 6.937,
+      "status": 0
+    },
+    {
+      "index": 112,
+      "timestamp": "2024-11-15T19:58:54",
+      "epoch": 1731711534,
+      "mg/dL": 144,
+      "mmol/L": 7.992,
+      "status": 0
+    },
+    {
+      "index": 113,
+      "timestamp": "2024-11-18T07:47:01",
+      "epoch": 1731926821,
+      "mg/dL": 67,
+      "mmol/L": 3.718,
+      "status": 0
+    },
+    {
+      "index": 114,
+      "timestamp": "2024-11-22T09:51:24",
+      "epoch": 1732279884,
+      "mg/dL": 148,
+      "mmol/L": 8.214,
+      "status": 0
+    },
+    {
+      "index": 115,
+      "timestamp": "2024-11-22T20:40:53",
+      "epoch": 1732318853,
+      "mg/dL": 180,
+      "mmol/L": 9.99,
+      "status": 0
+    },
+    {
+      "index": 116,
+      "timestamp": "2024-11-24T09:45:03",
+      "epoch": 1732452303,
+      "mg/dL": 126,
+      "mmol/L": 6.993,
+      "status": 0
+    },
+    {
+      "index": 117,
+      "timestamp": "2024-11-24T20:27:37",
+      "epoch": 1732490857,
+      "mg/dL": 159,
+      "mmol/L": 8.824,
+      "status": 0
+    },
+    {
+      "index": 118,
+      "timestamp": "2024-11-25T07:19:13",
+      "epoch": 1732529953,
+      "mg/dL": 125,
+      "mmol/L": 6.937,
+      "status": 0
+    },
+    {
+      "index": 119,
+      "timestamp": "2024-11-25T21:05:04",
+      "epoch": 1732579504,
+      "mg/dL": 147,
+      "mmol/L": 8.158,
+      "status": 0
+    },
+    {
+      "index": 120,
+      "timestamp": "2024-11-29T05:52:16",
+      "epoch": 1732870336,
+      "mg/dL": 120,
+      "mmol/L": 6.66,
+      "status": 0
+    }
+  ]
+}

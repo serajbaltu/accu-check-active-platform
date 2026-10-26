@@ -1,0 +1,75 @@
+# Descritor USB — Roche Accu-Chek Active (173a:21cc)
+# Capturado em 2026-10-21 com 'lsusb -v -d 173a:21cc' (sem root: strings do device e parte dos descriptors de config ficaram incompletas)
+# Dispositivo: Bus 001 Device 006, sysfs /sys/bus/usb/devices/1-1
+
+Couldn't open device, some information will be missing
+
+Bus 001 Device 006: ID 173a:21cc Roche Accu-Chek Active USB
+Device Descriptor:
+  bLength                18
+  bDescriptorType         1
+  bcdUSB               2.00
+  bDeviceClass            0 [unknown]
+  bDeviceSubClass         0 [unknown]
+  bDeviceProtocol         0 
+  bMaxPacketSize0        64
+  idVendor           0x173a Roche
+  idProduct          0x21cc Accu-Chek Active USB
+  bcdDevice            0.06
+  iManufacturer           1 Roche Diagnostics GmbH
+  iProduct                2 Accu-Chek Active USB
+  iSerial                 0 
+  bNumConfigurations      1
+  Configuration Descriptor:
+    bLength                 9
+    bDescriptorType         2
+    wTotalLength       0x0032
+    bNumInterfaces          1
+    bConfigurationValue     1
+    iConfiguration          0 
+    bmAttributes         0x80
+      (Bus Powered)
+    MaxPower              100mA
+    Interface Descriptor:
+      bLength                 9
+      bDescriptorType         4
+      bInterfaceNumber        0
+      bAlternateSetting       0
+      bNumEndpoints           2
+      bInterfaceClass        15 Personal Healthcare
+      bInterfaceSubClass      0 [unknown]
+      bInterfaceProtocol      0 
+      iInterface              0 
+      ** UNRECOGNIZED:  04 20 02 00
+      ** UNRECOGNIZED:  06 30 00 01 11 10
+      Endpoint Descriptor:
+        bLength                 7
+        bDescriptorType         5
+        bEndpointAddress     0x82  EP 2 IN
+        bmAttributes            2
+          Transfer Type            Bulk
+          Synch Type               None
+          Usage Type               Data
+        wMaxPacketSize     0x0040  1x 64 bytes
+        bInterval               0
+        DEVICE CLASS:  04 21 01 08
+      Endpoint Descriptor:
+        bLength                 7
+        bDescriptorType         5
+        bEndpointAddress     0x01  EP 1 OUT
+        bmAttributes            2
+          Transfer Type            Bulk
+          Synch Type               None
+          Usage Type               Data
+        wMaxPacketSize     0x0040  1x 64 bytes
+        bInterval               0
+        DEVICE CLASS:  04 21 01 08
+
+=== lsusb -t ===
+    |__ Port 001: Dev 006, If 0, Class=Personal Healthcare, Driver=[none], 12M
+    |__ Port 008: Dev 003, If 0, Class=Video, Driver=uvcvideo, 480M
+    |__ Port 008: Dev 003, If 1, Class=Video, Driver=uvcvideo, 480M
+
+=== sysfs endpoints ===
+ep_01: bmAttributes=02 wMaxPacketSize=0040 bEndpointAddress=0x01 type=Bulk
+ep_82: bmAttributes=02 wMaxPacketSize=0040 bEndpointAddress=0x82 type=Bulk

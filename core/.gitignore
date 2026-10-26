@@ -1,0 +1,27 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Dados de saúde em formato legível: regeneráveis com um comando
+# (src.cli dump / src.cli report) e fora do histórico do git.
+data.json
+relatorio.html
+relatorio-exemplo.html
+docs/captures/*/data.json
+
+# Capturas binárias pesadas
+docs/captures/*.pcap
+
+# Capturas reais das sessões de teste: contêm as leituras de glicemia
+# (dado de saúde) e a série do aparelho. Continuam no disco, mas não
+# entram no repositório público. O que é publicado está em
+# docs/captures/exemplo-sintetico/.
+docs/captures/sessao-*/
+
+# Instalador do software oficial da Roche (244 MB) — só referência
+*.exe

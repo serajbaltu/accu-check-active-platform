@@ -1,0 +1,42 @@
+[project]
+name = "accuchek"
+version = "0.1.0"
+description = "Cliente Linux para o glicosimetro Roche Accu-Chek Active (USB PHDC / ISO 11073-20601)"
+requires-python = ">=3.12"
+dependencies = ["pyusb>=1.3.1"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.17"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle
+    "F",    # pyflakes
+    "W",    # warnings
+    "I",    # isort
+    "UP",   # pyupgrade
+    "B",    # bugbear
+    "S",    # bandit
+    "BLE",  # blind-except
+    "PYI",  # type-hint correctness
+    "SIM",  # simplify
+]
+ignore = [
+    "S101",  # asserts são o ponto do pytest
+    "SIM108",  # ternário é menos legível aqui
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101", "BLE001", "B017"]
+# S311: o gerador de fixtures sintéticas usa `random` de propósito —
+# o ponto é ser reprodutível, não seguro.
+"tools/*" = ["S311"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
