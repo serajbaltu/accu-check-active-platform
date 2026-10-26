@@ -33,15 +33,25 @@ def api_install_driver():
 @app.route("/api/data")
 def api_data():
     offset_years = int(request.args.get("offset_years", 0))
+    target_min = int(request.args.get("target_min", 70))
+    target_max = int(request.args.get("target_max", 180))
+    severe_low = int(request.args.get("severe_low", 54))
+    severe_high = int(request.args.get("severe_high", 250))
+
     raw_data = accu_service.get_current_data(offset_years=offset_years)
     records = raw_data.get("records", [])
-    analytics = accu_service.compute_clinical_analytics(records)
+    analytics = accu_service.compute_clinical_analytics(
+        records,
+        target_min=target_min,
+        target_max=target_max,
+        severe_low=severe_low,
+        severe_high=severe_high
+    )
     return jsonify({
         "device": raw_data.get("device", {}),
         "read_at": raw_data.get("read_at"),
         "count": len(records),
         "is_synthetic": raw_data.get("is_synthetic", False),
-        "applied_year_offset": raw_data.get("applied_year_offset", 0),
         "records": records,
         "analytics": analytics
     })
@@ -66,8 +76,9 @@ def api_load_sample():
 
 @app.route("/api/export-csv")
 def api_export_csv():
-    offset_years = int(request.args.get("offset_years", 0))
-    raw_data = accu_service.get_current_data(offset_years=offset_years)
+    target_min = int(request.args.get("target_min", 70))
+    target_max = int(request.args.get("target_max", 180))
+    raw_data = accu_service.get_current_data(offset_years=0)
     records = raw_data.get("records", [])
     
     output = io.StringIO()
@@ -79,14 +90,14 @@ def api_export_csv():
         mmol = r.get("mmol_L", round(mg / 18.0182, 2))
         if mg < 54:
             cat = "هبوط حاد جداً (Very Low)"
-        elif mg < 70:
-            cat = "هبوط (Low)"
-        elif mg <= 180:
-            cat = "النطاق المستهدف (In Range)"
+        elif mg < target_min:
+            cat = f"هبوط (Low < {target_min})"
+        elif mg <= target_max:
+            cat = f"النطاق المستهدف (In Range {target_min}-{target_max})"
         elif mg <= 250:
-            cat = "ارتفاع (High)"
+            cat = f"ارتفاع (High > {target_max})"
         else:
-            cat = "ارتفاع حاد جداً (Very High)"
+            cat = "ارتفاع حاد جداً (Very High > 250)"
             
         writer.writerow([
             r.get("index", ""),

@@ -476,11 +476,14 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", async () => {
-        // Fetch current data with raw meter timestamps
+        // Fetch current data with custom target range if provided
         try {
-            const res = await fetch('/api/data?offset_years=0');
+            const urlParams = new URLSearchParams(window.location.search);
+            const targetMin = urlParams.get("target_min") || 70;
+            const targetMax = urlParams.get("target_max") || 180;
+            const res = await fetch(`/api/data?offset_years=0&target_min=${targetMin}&target_max=${targetMax}`);
             const data = await res.json();
-            renderReport(data);
+            renderReport(data, targetMin, targetMax);
         } catch (err) {
             console.error("Report fetch error:", err);
         }

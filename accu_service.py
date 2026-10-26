@@ -300,10 +300,16 @@ def get_current_data(offset_years: int = 0) -> Dict[str, Any]:
     return data
 
 
-def compute_clinical_analytics(records: List[Dict[str, Any]]) -> Dict[str, Any]:
+def compute_clinical_analytics(
+    records: List[Dict[str, Any]],
+    target_min: int = 70,
+    target_max: int = 180,
+    severe_low: int = 54,
+    severe_high: int = 250
+) -> Dict[str, Any]:
     """
     Calculates international standard diabetes clinical indicators:
-    TIR, GMI (estimated HbA1c), Mean, SD, CV, Hypo/Hyper counts, time of day.
+    TIR with customizable target thresholds, GMI (estimated HbA1c), Mean, SD, CV, Hypo/Hyper counts, time of day.
     """
     if not records:
         return {
@@ -314,6 +320,12 @@ def compute_clinical_analytics(records: List[Dict[str, Any]]) -> Dict[str, Any]:
             "sd": 0,
             "cv_percent": 0,
             "cv_target_met": True,
+            "target_range": {
+                "min": target_min,
+                "max": target_max,
+                "severe_low": severe_low,
+                "severe_high": severe_high
+            },
             "tir": {"very_low": 0, "low": 0, "in_range": 0, "high": 0, "very_high": 0},
             "tir_percentages": {"very_low": 0, "low": 0, "in_range": 0, "high": 0, "very_high": 0},
             "hypo_count": 0,
@@ -324,7 +336,7 @@ def compute_clinical_analytics(records: List[Dict[str, Any]]) -> Dict[str, Any]:
     values = [r["mg_dL"] for r in records if "mg_dL" in r and r["mg_dL"] > 0]
     n = len(values)
     if n == 0:
-        return compute_clinical_analytics([])
+        return compute_clinical_analytics([], target_min, target_max, severe_low, severe_high)
 
     mean_mg = sum(values) / n
     mean_mmol = round(mean_mg / 18.0182, 2)
@@ -340,17 +352,13 @@ def compute_clinical_analytics(records: List[Dict[str, Any]]) -> Dict[str, Any]:
     cv = round((sd / mean_mg) * 100, 1) if mean_mg > 0 else 0
     cv_target_met = (cv <= 36.0) # Clinical target is <= 36%
 
-    # Time In Range (TIR) International Consensus (Battelino et al. 2019)
-    # Very Low: < 54 mg/dL
-    # Low: 54 - 69 mg/dL
-    # In Range: 70 - 180 mg/dL
-    # High: 181 - 250 mg/dL
-    # Very High: > 250 mg/dL
-    very_low = sum(1 for x in values if x < 54)
-    low = sum(1 for x in values if 54 <= x < 70)
-    in_range = sum(1 for x in values if 70 <= x <= 180)
-    high = sum(1 for x in values if 181 <= x <= 250)
-    very_high = sum(1 for x in values if x > 250)
+    # Time In Range (TIR) with customizable thresholds
+    very_low = sum(1 for x in values if x < severe_low)
+    low = sum(1 for x in values if severe_low <= x < target_min)
+    in_range = sum(1 for x in values if target_min <= x <= target_max)
+    high = sum(1 for x in values if target_max < x <= severe_high)
+    very_high = sum(1 for x in values if x > severe_high)
+    hypo_count = sum(1 for x in values if x < target_min)
 
     tir = {
         "very_low": very_low,
@@ -417,5 +425,11 @@ def compute_clinical_analytics(records: List[Dict[str, Any]]) -> Dict[str, Any]:
         "severe_hypo_count": very_low,
         "hyper_count": high + very_high,
         "severe_hyper_count": very_high,
+        "target_range": {
+            "min": target_min,
+            "max": target_max,
+            "severe_low": severe_low,
+            "severe_high": severe_high
+        },
         "time_slots": time_slots_summary
     }

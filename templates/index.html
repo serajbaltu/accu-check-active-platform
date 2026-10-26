@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ACCU-CHEK Active | Clinical Diabetes Management Platform</title>
-    <!-- Google Fonts: Cairo for Arabic & Outfit / Inter for English and Numerals -->
+    <!-- Google Fonts: Cairo & Outfit & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,9 +14,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        /* ==========================================================================
-           Modern Medical Design System Tokens (Tailwind / shadcn-ui Inspired)
-           ========================================================================== */
         :root {
             --bg-base: #030712;
             --bg-surface: #0B0F19;
@@ -30,20 +27,16 @@
             --text-muted: #6B7280;
 
             /* Clinical Consensus TIR Color Palette */
-            --tir-very-low: #EF4444;    /* Severe Hypo < 54 mg/dL */
-            --tir-low: #F97316;         /* Hypo 54-69 mg/dL */
-            --tir-target: #10B981;      /* In Target Range 70-180 mg/dL */
-            --tir-high: #F59E0B;        /* Hyper 181-250 mg/dL */
-            --tir-very-high: #B91C1C;   /* Severe Hyper > 250 mg/dL */
+            --tir-very-low: #EF4444;    /* Severe Hypo */
+            --tir-low: #F97316;         /* Hypo */
+            --tir-target: #10B981;      /* In Target Range */
+            --tir-high: #F59E0B;        /* Hyper */
+            --tir-very-high: #B91C1C;   /* Severe Hyper */
 
-            /* Tech & Brand Colors */
             --primary: #3B82F6;
             --primary-hover: #2563EB;
-            --primary-glow: rgba(59, 130, 246, 0.4);
             --accent-cyan: #06B6D4;
-            --accent-purple: #8B5CF6;
 
-            /* Radii & Shadows */
             --radius-lg: 16px;
             --radius-md: 12px;
             --radius-sm: 8px;
@@ -71,14 +64,8 @@
             transition: var(--transition-smooth);
         }
 
-        /* Language-specific typography */
-        html[lang="ar"] body {
-            font-family: 'Cairo', system-ui, -apple-system, sans-serif;
-        }
-
-        html[lang="en"] body {
-            font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
-        }
+        html[lang="ar"] body { font-family: 'Cairo', system-ui, -apple-system, sans-serif; }
+        html[lang="en"] body { font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif; }
 
         .container {
             max-width: 1440px;
@@ -86,9 +73,7 @@
             padding: 24px 32px;
         }
 
-        /* ==========================================================================
-           Header & Navigation Bar
-           ========================================================================== */
+        /* Header Bar */
         header {
             display: flex;
             align-items: center;
@@ -149,7 +134,7 @@
             flex-wrap: wrap;
         }
 
-        /* Language Switcher Segmented Control */
+        /* Language Switcher */
         .lang-switcher {
             display: inline-flex;
             background: rgba(255, 255, 255, 0.06);
@@ -235,9 +220,7 @@
             box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
         }
 
-        /* ==========================================================================
-           Connected Device Showcase Banner (Features High-Definition SVG Meter)
-           ========================================================================== */
+        /* Device Showcase Banner */
         .device-banner {
             background: var(--bg-card);
             backdrop-filter: blur(20px);
@@ -282,7 +265,6 @@
             gap: 24px;
         }
 
-        /* Device SVG Visual Container */
         .device-svg-wrapper {
             position: relative;
             width: 90px;
@@ -394,9 +376,7 @@
             gap: 6px;
         }
 
-        .device-badge i {
-            color: #60A5FA;
-        }
+        .device-badge i { color: #60A5FA; }
 
         .device-banner-actions {
             display: flex;
@@ -405,9 +385,7 @@
             flex-wrap: wrap;
         }
 
-        /* ==========================================================================
-           KPI Summary Grid
-           ========================================================================== */
+        /* KPI Grid */
         .kpi-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -477,17 +455,10 @@
             gap: 6px;
         }
 
-        .target-met {
-            color: #34D399;
-        }
+        .target-met { color: #34D399; }
+        .target-warning { color: #FBBF24; }
 
-        .target-warning {
-            color: #FBBF24;
-        }
-
-        /* ==========================================================================
-           Charts Section Layout
-           ========================================================================== */
+        /* Charts Layout */
         .charts-row-2col {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -503,9 +474,7 @@
         }
 
         @media (max-width: 1024px) {
-            .charts-row-2col, .charts-row-even {
-                grid-template-columns: 1fr;
-            }
+            .charts-row-2col, .charts-row-even { grid-template-columns: 1fr; }
         }
 
         .chart-card {
@@ -521,9 +490,7 @@
             transition: var(--transition-smooth);
         }
 
-        .chart-card:hover {
-            border-color: rgba(255, 255, 255, 0.14);
-        }
+        .chart-card:hover { border-color: rgba(255, 255, 255, 0.14); }
 
         .chart-header {
             display: flex;
@@ -540,9 +507,7 @@
             color: var(--text-primary);
         }
 
-        .chart-title i {
-            color: #60A5FA;
-        }
+        .chart-title i { color: #60A5FA; }
 
         .chart-container {
             position: relative;
@@ -550,7 +515,7 @@
             width: 100%;
         }
 
-        /* TIR Breakdown List */
+        /* TIR List */
         .tir-list {
             display: flex;
             flex-direction: column;
@@ -587,9 +552,7 @@
             font-weight: 700;
         }
 
-        /* ==========================================================================
-           Logbook Table & Advanced Sorting System
-           ========================================================================== */
+        /* Logbook Table */
         .table-card {
             background: var(--bg-card);
             backdrop-filter: blur(16px);
@@ -644,9 +607,7 @@
             box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
         }
 
-        .filter-tab:hover:not(.active) {
-            color: var(--text-primary);
-        }
+        .filter-tab:hover:not(.active) { color: var(--text-primary); }
 
         .table-wrapper {
             overflow-x: auto;
@@ -674,7 +635,6 @@
             white-space: nowrap;
         }
 
-        /* Clickable Sortable Columns */
         th.sortable {
             cursor: pointer;
             transition: var(--transition-smooth);
@@ -714,15 +674,8 @@
             white-space: nowrap;
         }
 
-        tbody tr {
-            transition: var(--transition-smooth);
-        }
+        tbody tr:hover { background: rgba(255, 255, 255, 0.03); }
 
-        tbody tr:hover {
-            background: rgba(255, 255, 255, 0.03);
-        }
-
-        /* Clinical Status Badges */
         .badge-cat {
             display: inline-flex;
             align-items: center;
@@ -785,7 +738,7 @@
             border-radius: var(--radius-lg);
             width: 100%;
             max-width: 600px;
-            padding: 30px;
+            padding: 28px;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
             position: relative;
         }
@@ -831,6 +784,111 @@
             line-height: 1.5;
         }
 
+        /* Presets Cards for Target Range */
+        .preset-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .preset-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 12px 14px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .preset-card:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .preset-card.active {
+            border-color: var(--primary);
+            background: rgba(59, 130, 246, 0.12);
+        }
+
+        .preset-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .preset-range {
+            font-family: 'Outfit', sans-serif;
+            font-size: 15px;
+            font-weight: 800;
+            color: #60A5FA;
+            margin-top: 4px;
+        }
+
+        .range-inputs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .range-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .range-label {
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .range-input-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .range-input {
+            width: 100%;
+            background: #1F2937;
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            color: white;
+            padding: 10px 14px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            outline: none;
+            transition: var(--transition-smooth);
+        }
+
+        .range-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+        }
+
+        .range-unit-tag {
+            position: absolute;
+            inset-inline-end: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+
+        .range-mmol-helper {
+            font-size: 11.5px;
+            color: var(--text-muted);
+            font-family: 'Outfit', sans-serif;
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -840,11 +898,7 @@
             border-top: 1px solid var(--border-subtle);
         }
 
-        /* Animation Keyframes */
-        .syncing-pulse {
-            animation: syncGlow 1.2s infinite alternate;
-        }
-
+        .syncing-pulse { animation: syncGlow 1.2s infinite alternate; }
         @keyframes syncGlow {
             from { box-shadow: 0 0 10px rgba(16, 185, 129, 0.4); }
             to { box-shadow: 0 0 25px rgba(16, 185, 129, 0.85); }
@@ -877,6 +931,10 @@
                 </button>
             </div>
 
+            <!-- Target Range Modifier Button -->
+            <button class="btn btn-glass" onclick="showRangeModal()" id="btnTargetRange">
+                <i class="fa-solid fa-sliders"></i> <span data-i18n="btn_target_range">تعديل النطاق</span>
+            </button>
             <button class="btn btn-glass" onclick="showTimeModal()" id="btnMeterClock">
                 <i class="fa-solid fa-clock"></i> <span data-i18n="btn_meter_clock">ضبط العداد</span>
             </button>
@@ -895,7 +953,7 @@
     <!-- Connected Device Showcase Banner with High-Fidelity SVG Meter -->
     <div id="deviceBanner" class="device-banner">
         <div class="device-profile-box">
-            <!-- Detailed Scalable SVG Rendering of Roche Accu-Chek Active -->
+            <!-- Scalable SVG Rendering of Roche Accu-Chek Active -->
             <div class="device-svg-wrapper">
                 <div class="device-pulse-ring"></div>
                 <svg viewBox="0 0 140 220" xmlns="http://www.w3.org/2000/svg">
@@ -923,28 +981,23 @@
                         </linearGradient>
                     </defs>
 
-                    <!-- Outer Ergonomic Casing -->
                     <path d="M70 12 C105 12 126 36 126 78 C126 130 115 190 70 190 C25 190 14 130 14 78 C14 36 35 12 70 12 Z" 
                           fill="url(#bodyGrad)" stroke="#374151" stroke-width="2.5" filter="url(#meterShadow)"/>
                     <path d="M70 15 C102 15 122 38 122 78 C122 128 112 186 70 186 C28 186 18 128 18 78 C18 38 38 15 70 15 Z" 
                           fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.2"/>
 
-                    <!-- Logo & Model Branding -->
                     <text x="70" y="32" font-family="'Outfit', sans-serif" font-size="7" font-weight="800" fill="#E5E7EB" text-anchor="middle" letter-spacing="1">ROCHE</text>
                     <text x="70" y="40" font-family="'Outfit', sans-serif" font-size="5.2" font-weight="700" fill="#38BDF8" text-anchor="middle" letter-spacing="0.5">ACCU-CHEK</text>
                     <text x="70" y="46" font-family="'Outfit', sans-serif" font-size="4.5" font-weight="500" fill="#9CA3AF" text-anchor="middle">Active</text>
 
-                    <!-- LCD Digital Screen -->
                     <rect x="33" y="52" width="74" height="48" rx="7" fill="url(#screenGrad)" stroke="#1E293B" stroke-width="1.8"/>
                     <rect x="35" y="54" width="70" height="44" rx="5" fill="none" stroke="rgba(6, 182, 212, 0.2)" stroke-width="1"/>
 
-                    <!-- Screen Text Content: PC Connection -->
                     <g id="meterScreenText">
                         <text x="70" y="81" font-family="'Outfit', monospace" font-size="22" font-weight="800" fill="#22D3EE" text-anchor="middle" letter-spacing="2">PC</text>
                         <text x="70" y="93" font-family="'Outfit', sans-serif" font-size="6.5" font-weight="600" fill="#67E8F9" text-anchor="middle">USB LINK</text>
                     </g>
 
-                    <!-- Buttons: S and M -->
                     <circle cx="51" cy="122" r="13" fill="url(#btnGrad)" stroke="#4B5563" stroke-width="1.5"/>
                     <circle cx="51" cy="122" r="10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
                     <text x="51" y="126" font-family="'Outfit', sans-serif" font-size="11" font-weight="800" fill="#D1D5DB" text-anchor="middle">S</text>
@@ -953,7 +1006,6 @@
                     <circle cx="89" cy="122" r="10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
                     <text x="89" y="126" font-family="'Outfit', sans-serif" font-size="11" font-weight="800" fill="#D1D5DB" text-anchor="middle">M</text>
 
-                    <!-- Orange Test Strip Port & Strip -->
                     <rect x="52" y="180" width="36" height="12" rx="3" fill="url(#orangePort)" stroke="#9A3412" stroke-width="1"/>
                     <rect x="58" y="184" width="24" height="4" rx="1.5" fill="#431407"/>
                     <rect x="62" y="187" width="16" height="26" rx="2" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="0.8"/>
@@ -962,7 +1014,7 @@
                 </svg>
             </div>
 
-            <!-- Device Information & Details -->
+            <!-- Device Information -->
             <div class="device-details-content">
                 <div class="device-title-row">
                     <h2 id="deviceName">Roche Accu-Chek Active USB</h2>
@@ -982,7 +1034,6 @@
             </div>
         </div>
 
-        <!-- Banner Action Buttons -->
         <div class="device-banner-actions">
             <button id="btnInstallDriver" class="btn btn-primary" onclick="showDriverModal()" style="display: none;">
                 <i class="fa-solid fa-download"></i> <span data-i18n="btn_install_winusb">تثبيت برنامج تشغيل WinUSB</span>
@@ -1037,7 +1088,7 @@
                 <div class="kpi-icon" style="color: #10B981;"><i class="fa-solid fa-bullseye"></i></div>
             </div>
             <div class="kpi-value" id="kpiTir" style="color: #34D399;">-- <span class="kpi-unit">%</span></div>
-            <div class="kpi-subtext" data-i18n="kpi_tir_desc">70 - 180 mg/dL (المستهدف &gt; 70%)</div>
+            <div class="kpi-subtext" id="kpiTirDesc">70 - 180 mg/dL (المستهدف &gt; 70%)</div>
         </div>
 
         <div class="kpi-card">
@@ -1052,7 +1103,6 @@
 
     <!-- Charts Row 1: Timeline + TIR Donut -->
     <div class="charts-row-2col">
-        <!-- Longitudinal Glucose Timeline Chart -->
         <div class="chart-card">
             <div class="chart-header">
                 <div class="chart-title">
@@ -1060,9 +1110,9 @@
                     <span data-i18n="chart_timeline_title">مسار قراءات سكر الدم عبر الزمن (Timeline)</span>
                 </div>
                 <div style="font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 10px;">
-                    <span><i class="fa-solid fa-circle" style="color: #10B981; font-size: 9px;"></i> <span data-i18n="legend_target">الهدف 70-180</span></span>
-                    <span><i class="fa-solid fa-circle" style="color: #F59E0B; font-size: 9px;"></i> <span data-i18n="legend_high">ارتفاع &gt; 180</span></span>
-                    <span><i class="fa-solid fa-circle" style="color: #EF4444; font-size: 9px;"></i> <span data-i18n="legend_low">هبوط &lt; 70</span></span>
+                    <span><i class="fa-solid fa-circle" style="color: #10B981; font-size: 9px;"></i> <span id="legendTargetText">الهدف 70-180</span></span>
+                    <span><i class="fa-solid fa-circle" style="color: #F59E0B; font-size: 9px;"></i> <span id="legendHighText">ارتفاع &gt; 180</span></span>
+                    <span><i class="fa-solid fa-circle" style="color: #EF4444; font-size: 9px;"></i> <span id="legendLowText">هبوط &lt; 70</span></span>
                 </div>
             </div>
             <div class="chart-container">
@@ -1070,7 +1120,6 @@
             </div>
         </div>
 
-        <!-- TIR Distribution Donut -->
         <div class="chart-card">
             <div class="chart-header">
                 <div class="chart-title">
@@ -1089,7 +1138,6 @@
 
     <!-- Charts Row 2: 24h Modal Profile + Time of Day Breakdown -->
     <div class="charts-row-even">
-        <!-- 24-Hour AGP Profile -->
         <div class="chart-card">
             <div class="chart-header">
                 <div class="chart-title">
@@ -1102,7 +1150,6 @@
             </div>
         </div>
 
-        <!-- Time of Day Breakdown -->
         <div class="chart-card">
             <div class="chart-header">
                 <div class="chart-title">
@@ -1152,7 +1199,6 @@
             <table>
                 <thead>
                     <tr>
-                        <!-- Clickable Column Headers for Instant Two-Way Sorting -->
                         <th class="sortable active-sort" onclick="handleSort('index')" id="th_index">
                             <div class="th-content">
                                 <span data-i18n="col_index"># التسلسل</span>
@@ -1203,6 +1249,112 @@
     <footer>
         <p id="footerText">منصة إدارة أجهزة ACCU-CHEK &copy; 2026 - نظام القراءة والتحليل السريري المباشر عبر USB.</p>
     </footer>
+</div>
+
+<!-- Target Range Customization Modal -->
+<div id="rangeModal" class="modal-overlay">
+    <div class="modal-card">
+        <div class="modal-header">
+            <h3><i class="fa-solid fa-sliders" style="color: #3B82F6;"></i> <span data-i18n="modal_range_title">تعديل نطاق سكر الدم المستهدف (TIR)</span></h3>
+            <button onclick="closeRangeModal()" style="background: none; border: none; color: white; font-size: 20px; cursor: pointer;">&times;</button>
+        </div>
+
+        <div class="modal-body">
+            <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 16px;" data-i18n="modal_range_desc">
+                حدد النطاق السريري المستهدف الموصى به من قبل طبيبك المعالج. سيتم تحديث كافة التحليلات، ونسب الوقت في الهدف (TIR)، وتصنيفات الجدول فوراً:
+            </p>
+
+            <!-- Presets -->
+            <div class="preset-grid">
+                <div class="preset-card active" onclick="applyPreset('standard')" id="preset_standard">
+                    <div class="preset-title"><i class="fa-solid fa-award" style="color: #10B981;"></i> <span data-i18n="preset_std_title">المعيار الطبي العام (ADA)</span></div>
+                    <div class="preset-range">70 - 180 mg/dL</div>
+                    <div style="font-size: 11px; color: var(--text-muted);">3.9 - 10.0 mmol/L</div>
+                </div>
+
+                <div class="preset-card" onclick="applyPreset('tight')" id="preset_tight">
+                    <div class="preset-title"><i class="fa-solid fa-baby" style="color: #06B6D4;"></i> <span data-i18n="preset_tight_title">حمل / تحكم مكثف</span></div>
+                    <div class="preset-range">63 - 140 mg/dL</div>
+                    <div style="font-size: 11px; color: var(--text-muted);">3.5 - 7.8 mmol/L</div>
+                </div>
+
+                <div class="preset-card" onclick="applyPreset('elderly')" id="preset_elderly">
+                    <div class="preset-title"><i class="fa-solid fa-person-cane" style="color: #F59E0B;"></i> <span data-i18n="preset_eld_title">كبار السن / تجنب الهبوط</span></div>
+                    <div class="preset-range">80 - 200 mg/dL</div>
+                    <div style="font-size: 11px; color: var(--text-muted);">4.4 - 11.1 mmol/L</div>
+                </div>
+
+                <div class="preset-card" onclick="applyPreset('custom')" id="preset_custom">
+                    <div class="preset-title"><i class="fa-solid fa-pen-to-square" style="color: #A78BFA;"></i> <span data-i18n="preset_custom_title">نطاق مخصص (Custom)</span></div>
+                    <div class="preset-range" id="customPresetLabel">حر ومخصص</div>
+                    <div style="font-size: 11px; color: var(--text-muted);" data-i18n="preset_custom_desc">تحديد يدوي مباشر</div>
+                </div>
+            </div>
+
+            <!-- Manual Inputs -->
+            <div class="range-inputs-grid">
+                <div class="range-field">
+                    <div class="range-label">
+                        <span data-i18n="label_target_min">الحد الأدنى للهدف (Min Target)</span>
+                        <span class="range-mmol-helper" id="minMmolHelper">3.9 mmol/L</span>
+                    </div>
+                    <div class="range-input-box">
+                        <input type="number" id="inputTargetMin" class="range-input" value="70" min="40" max="150" oninput="onRangeInputChange()">
+                        <span class="range-unit-tag">mg/dL</span>
+                    </div>
+                </div>
+
+                <div class="range-field">
+                    <div class="range-label">
+                        <span data-i18n="label_target_max">الحد الأقصى للهدف (Max Target)</span>
+                        <span class="range-mmol-helper" id="maxMmolHelper">10.0 mmol/L</span>
+                    </div>
+                    <div class="range-input-box">
+                        <input type="number" id="inputTargetMax" class="range-input" value="180" min="100" max="350" oninput="onRangeInputChange()">
+                        <span class="range-unit-tag">mg/dL</span>
+                    </div>
+                </div>
+
+                <div class="range-field">
+                    <div class="range-label">
+                        <span data-i18n="label_severe_low">عتبة الهبوط الحاد (Very Low)</span>
+                        <span class="range-mmol-helper" id="sevLowMmolHelper">3.0 mmol/L</span>
+                    </div>
+                    <div class="range-input-box">
+                        <input type="number" id="inputSevereLow" class="range-input" value="54" min="30" max="70" oninput="onRangeInputChange()">
+                        <span class="range-unit-tag">mg/dL</span>
+                    </div>
+                </div>
+
+                <div class="range-field">
+                    <div class="range-label">
+                        <span data-i18n="label_severe_high">عتبة الارتفاع الحاد (Very High)</span>
+                        <span class="range-mmol-helper" id="sevHighMmolHelper">13.9 mmol/L</span>
+                    </div>
+                    <div class="range-input-box">
+                        <input type="number" id="inputSevereHigh" class="range-input" value="250" min="180" max="400" oninput="onRangeInputChange()">
+                        <span class="range-unit-tag">mg/dL</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="rangeErrorBox" style="display: none; background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 8px; padding: 10px 14px; font-size: 13px; color: #FCA5A5; margin-bottom: 16px;">
+                <i class="fa-solid fa-circle-exclamation"></i> <span id="rangeErrorText">يجب أن يكون الحد الأدنى أقل من الحد الأقصى.</span>
+            </div>
+
+            <div style="display: flex; gap: 12px; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-subtle); padding-top: 18px;">
+                <button class="btn btn-glass" onclick="resetRangeToDefault()" style="font-size: 12.5px;">
+                    <i class="fa-solid fa-rotate-left"></i> <span data-i18n="btn_reset_default">استعادة الافتراضي</span>
+                </button>
+                <div style="display: flex; gap: 10px;">
+                    <button class="btn btn-glass" onclick="closeRangeModal()" data-i18n="modal_btn_cancel">إلغاء</button>
+                    <button class="btn btn-primary" onclick="saveTargetRange()">
+                        <i class="fa-solid fa-check"></i> <span data-i18n="btn_save_range">حفظ وتطبيق النطاق</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Driver Installation Helper Modal -->
@@ -1292,6 +1444,7 @@
         ar: {
             brand_title: "منصة <span id='brandName'>ACCU-CHEK</span> لتحليل السكر",
             brand_sub: "نظام القراءة والتحليل السريري المتقدم عبر USB (بروتوكول ISO/IEEE 11073-20601)",
+            btn_target_range: "تعديل النطاق",
             btn_meter_clock: "ضبط العداد",
             btn_demo_data: "بيانات نموذجية",
             btn_export_excel: "تصدير Excel",
@@ -1314,13 +1467,8 @@
             kpi_cv_stable: "مستقر سكرياً (≤ 36%)",
             kpi_cv_unstable: "تذبذب سكري عالي (> 36%)",
             kpi_tir_title: "الوقت في النطاق المستهدف (TIR)",
-            kpi_tir_desc: "70 - 180 mg/dL (المستهدف > 70%)",
-            kpi_hypo_title: "حوادث الهبوط (< 70)",
-            kpi_severe_hypo: "هبوط حاد (< 54 mg/dL)",
+            kpi_hypo_title: "حوادث الهبوط",
             chart_timeline_title: "مسار قراءات سكر الدم عبر الزمن (Timeline)",
-            legend_target: "الهدف 70-180",
-            legend_high: "ارتفاع > 180",
-            legend_low: "هبوط < 70",
             chart_tir_title: "توزيع الوقت في الهدف (TIR)",
             chart_agp_title: "الملف اليومي التراكمي خلال 24 ساعة (AGP Profile)",
             chart_slots_title: "متوسط السكر حسب فترات اليوم والوجبات",
@@ -1339,14 +1487,27 @@
             loading_logbook: "جاري تحميل سجل البيانات...",
             no_records: "لا توجد قياسات مسجلة",
             no_filtered_records: "لا توجد قياسات مطابقة للفلتر المحدد",
-            cat_very_low: "هبوط حاد جداً (< 54)",
-            cat_low: "هبوط (54-69)",
-            cat_in_range: "ضمن النطاق المستهدف (70-180)",
-            cat_high: "ارتفاع (181-250)",
-            cat_very_high: "ارتفاع حاد (> 250)",
+            cat_very_low: "هبوط حاد جداً",
+            cat_low: "هبوط",
+            cat_in_range: "ضمن النطاق المستهدف",
+            cat_high: "ارتفاع",
+            cat_very_high: "ارتفاع حاد جداً",
             notes_meter_memory: "مسجل بذاكرة العداد",
             data_source_meter: "بيانات حقيقية من ذاكرة الجهاز",
             data_source_demo: "بيانات توضيحية نموذجية",
+            modal_range_title: "تعديل نطاق سكر الدم المستهدف (TIR)",
+            modal_range_desc: "حدد النطاق السريري المستهدف الموصى به من قبل طبيبك المعالج. سيتم تحديث كافة التحليلات، ونسب الوقت في الهدف (TIR)، وتصنيفات الجدول فوراً:",
+            preset_std_title: "المعيار الطبي العام (ADA)",
+            preset_tight_title: "حمل / تحكم مكثف",
+            preset_eld_title: "كبار السن / تجنب الهبوط",
+            preset_custom_title: "نطاق مخصص (Custom)",
+            preset_custom_desc: "تحديد يدوي مباشر",
+            label_target_min: "الحد الأدنى للهدف (Min Target)",
+            label_target_max: "الحد الأقصى للهدف (Max Target)",
+            label_severe_low: "عتبة الهبوط الحاد (Very Low)",
+            label_severe_high: "عتبة الارتفاع الحاد (Very High)",
+            btn_reset_default: "استعادة الافتراضي",
+            btn_save_range: "حفظ وتطبيق النطاق",
             modal_driver_title: "تثبيت برنامج تشغيل ACCU-CHEK (WinUSB)",
             modal_driver_desc: "جهاز Accu-Chek Active يعتمد بروتوكول الرعاية الصحية الشخصية PHDC (ISO/IEEE 11073-20601) عبر منفذ USB. لتمكين الويندوز من قراءة ذاكرة الجهاز مباشرة وبأعلى سرعة، يتم تثبيت مشغل WinUSB المعتمد من مايكروسوفت.",
             modal_step1_title: "الخطوة الأولى: تشغيل مثبت التعريفات",
@@ -1371,6 +1532,7 @@
         en: {
             brand_title: "<span id='brandName'>ACCU-CHEK</span> Glucose Analytics Platform",
             brand_sub: "Advanced Clinical USB Health System (ISO/IEEE 11073-20601 Protocol)",
+            btn_target_range: "Target Range",
             btn_meter_clock: "Meter Clock",
             btn_demo_data: "Demo Data",
             btn_export_excel: "Export Excel",
@@ -1393,13 +1555,8 @@
             kpi_cv_stable: "Glycemically Stable (≤ 36%)",
             kpi_cv_unstable: "High Glucose Variability (> 36%)",
             kpi_tir_title: "Time in Range (TIR)",
-            kpi_tir_desc: "70 - 180 mg/dL (Target > 70%)",
-            kpi_hypo_title: "Hypoglycemia Events (< 70)",
-            kpi_severe_hypo: "Severe Hypo (< 54 mg/dL)",
+            kpi_hypo_title: "Hypoglycemia Events",
             chart_timeline_title: "Longitudinal Glucose Trend (Timeline)",
-            legend_target: "Target 70-180",
-            legend_high: "High > 180",
-            legend_low: "Low < 70",
             chart_tir_title: "Time in Range Distribution (TIR)",
             chart_agp_title: "24-Hour Ambulatory Glucose Profile (AGP)",
             chart_slots_title: "Meal & Time-of-Day Glucose Breakdown",
@@ -1418,14 +1575,27 @@
             loading_logbook: "Loading measurement logbook...",
             no_records: "No recorded measurements found",
             no_filtered_records: "No measurements matching selected filter",
-            cat_very_low: "Severe Hypo (< 54)",
-            cat_low: "Hypo (54-69)",
-            cat_in_range: "In Target Range (70-180)",
-            cat_high: "Hyper (181-250)",
-            cat_very_high: "Severe Hyper (> 250)",
+            cat_very_low: "Severe Hypo",
+            cat_low: "Hypo",
+            cat_in_range: "In Target Range",
+            cat_high: "Hyper",
+            cat_very_high: "Severe Hyper",
             notes_meter_memory: "Stored in Meter EEPROM",
             data_source_meter: "Live device flash memory",
             data_source_demo: "Synthetic demo dataset",
+            modal_range_title: "Customize Target Glucose Range (TIR)",
+            modal_range_desc: "Adjust the clinical target range recommended by your physician. All analytics, Time In Range (TIR) metrics, and classifications will update instantly:",
+            preset_std_title: "Standard Consensus (ADA)",
+            preset_tight_title: "Tight / Pregnancy",
+            preset_eld_title: "Elderly / Hypo-Aware",
+            preset_custom_title: "Custom Range",
+            preset_custom_desc: "Manual values",
+            label_target_min: "Target Min (mg/dL)",
+            label_target_max: "Target Max (mg/dL)",
+            label_severe_low: "Severe Hypo Threshold",
+            label_severe_high: "Severe Hyper Threshold",
+            btn_reset_default: "Reset Default",
+            btn_save_range: "Save & Apply Range",
             modal_driver_title: "Install ACCU-CHEK Driver (WinUSB)",
             modal_driver_desc: "The Accu-Chek Active meter uses the ISO/IEEE 11073-20601 Personal Health Device Class. To allow Windows to read flash memory directly without software lock-in, install Microsoft's certified WinUSB driver.",
             modal_step1_title: "Step 1: Launch Driver Installer",
@@ -1450,13 +1620,17 @@
     };
 
     // -------------------------------------------------------------
-    // Application State
+    // Application State & Target Range
     // -------------------------------------------------------------
     let currentLang = localStorage.getItem('accu_lang') || 'ar';
     let rawRecords = [];
     let currentFilter = 'all';
     let sortColumn = 'index';
-    let sortDirection = 'desc'; // 'desc' or 'asc'
+    let sortDirection = 'desc';
+
+    // Target Range (Saved in LocalStorage)
+    let defaultTargetRange = { min: 70, max: 180, severeLow: 54, severeHigh: 250 };
+    let targetRange = JSON.parse(localStorage.getItem('accu_target_range')) || { ...defaultTargetRange };
 
     let timelineChartInstance = null;
     let tirDonutChartInstance = null;
@@ -1473,34 +1647,26 @@
         document.documentElement.lang = lang;
         document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
 
-        // Update active switch buttons
         document.getElementById('langBtnAr').classList.toggle('active', lang === 'ar');
         document.getElementById('langBtnEn').classList.toggle('active', lang === 'en');
 
-        // Update Text Elements with data-i18n
         const dict = i18n[lang];
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
-            if (dict[key]) {
-                el.innerHTML = dict[key];
-            }
+            if (dict[key]) el.innerHTML = dict[key];
         });
 
-        // Update header & footer text
         document.getElementById('brandSubtitle').textContent = dict.brand_sub;
         document.getElementById('footerText').textContent = dict.footer_text;
 
-        // Update quick sort dropdown options
         updateSortDropdownLabels();
+        updateTargetRangeUI();
 
-        // Update link to report
         const rptLink = document.getElementById('btnReportLink');
-        if (rptLink) rptLink.href = `/report?lang=${lang}`;
+        if (rptLink) rptLink.href = `/report?lang=${lang}&target_min=${targetRange.min}&target_max=${targetRange.max}`;
 
-        // Re-check device status to update localized messages
         checkDeviceStatus();
 
-        // Re-render UI
         if (rawRecords.length > 0) {
             renderTable(rawRecords);
         }
@@ -1519,18 +1685,168 @@
     }
 
     // -------------------------------------------------------------
-    // Initialization on Page Load
+    // Initialization
     // -------------------------------------------------------------
     document.addEventListener("DOMContentLoaded", () => {
         setLanguage(currentLang);
+        updateRangeModalInputs();
         checkDeviceStatus();
         loadDashboardData();
-        // Poll status every 4 seconds
         setInterval(checkDeviceStatus, 4000);
     });
 
     // -------------------------------------------------------------
-    // Device & Driver Status Polling
+    // Target Range Management
+    // -------------------------------------------------------------
+    function updateTargetRangeUI() {
+        const isAr = currentLang === 'ar';
+        // Update KPI Card description
+        const tirDesc = document.getElementById('kpiTirDesc');
+        if (tirDesc) {
+            tirDesc.textContent = `${targetRange.min} - ${targetRange.max} mg/dL (${isAr ? 'المستهدف > 70%' : 'Target > 70%'})`;
+        }
+
+        // Update Timeline Legend Text
+        const legTarget = document.getElementById('legendTargetText');
+        const legHigh = document.getElementById('legendHighText');
+        const legLow = document.getElementById('legendLowText');
+        if (legTarget) legTarget.textContent = isAr ? `الهدف ${targetRange.min}-${targetRange.max}` : `Target ${targetRange.min}-${targetRange.max}`;
+        if (legHigh) legHigh.textContent = isAr ? `ارتفاع > ${targetRange.max}` : `High > ${targetRange.max}`;
+        if (legLow) legLow.textContent = isAr ? `هبوط < ${targetRange.min}` : `Low < ${targetRange.min}`;
+
+        // Update Export CSV Link
+        const exportBtn = document.getElementById('btnExportCsv');
+        if (exportBtn) {
+            exportBtn.href = `/api/export-csv?target_min=${targetRange.min}&target_max=${targetRange.max}`;
+        }
+
+        // Update Report Link
+        const reportBtn = document.getElementById('btnReportLink');
+        if (reportBtn) {
+            reportBtn.href = `/report?lang=${currentLang}&target_min=${targetRange.min}&target_max=${targetRange.max}`;
+        }
+    }
+
+    function showRangeModal() {
+        updateRangeModalInputs();
+        document.getElementById('rangeModal').style.display = 'flex';
+    }
+
+    function closeRangeModal() {
+        document.getElementById('rangeModal').style.display = 'none';
+        document.getElementById('rangeErrorBox').style.display = 'none';
+    }
+
+    function updateRangeModalInputs() {
+        document.getElementById('inputTargetMin').value = targetRange.min;
+        document.getElementById('inputTargetMax').value = targetRange.max;
+        document.getElementById('inputSevereLow').value = targetRange.severeLow;
+        document.getElementById('inputSevereHigh').value = targetRange.severeHigh;
+        onRangeInputChange();
+        detectActivePreset();
+    }
+
+    function onRangeInputChange() {
+        const minVal = parseFloat(document.getElementById('inputTargetMin').value) || 0;
+        const maxVal = parseFloat(document.getElementById('inputTargetMax').value) || 0;
+        const sevLow = parseFloat(document.getElementById('inputSevereLow').value) || 0;
+        const sevHigh = parseFloat(document.getElementById('inputSevereHigh').value) || 0;
+
+        document.getElementById('minMmolHelper').textContent = `${(minVal / 18.0182).toFixed(1)} mmol/L`;
+        document.getElementById('maxMmolHelper').textContent = `${(maxVal / 18.0182).toFixed(1)} mmol/L`;
+        document.getElementById('sevLowMmolHelper').textContent = `${(sevLow / 18.0182).toFixed(1)} mmol/L`;
+        document.getElementById('sevHighMmolHelper').textContent = `${(sevHigh / 18.0182).toFixed(1)} mmol/L`;
+
+        detectActivePreset();
+    }
+
+    function detectActivePreset() {
+        const minVal = parseInt(document.getElementById('inputTargetMin').value, 10);
+        const maxVal = parseInt(document.getElementById('inputTargetMax').value, 10);
+        const sevLow = parseInt(document.getElementById('inputSevereLow').value, 10);
+        const sevHigh = parseInt(document.getElementById('inputSevereHigh').value, 10);
+
+        document.querySelectorAll('.preset-card').forEach(c => c.classList.remove('active'));
+
+        if (minVal === 70 && maxVal === 180 && sevLow === 54 && sevHigh === 250) {
+            document.getElementById('preset_standard').classList.add('active');
+        } else if (minVal === 63 && maxVal === 140 && sevLow === 50 && sevHigh === 200) {
+            document.getElementById('preset_tight').classList.add('active');
+        } else if (minVal === 80 && maxVal === 200 && sevLow === 60 && sevHigh === 270) {
+            document.getElementById('preset_elderly').classList.add('active');
+        } else {
+            document.getElementById('preset_custom').classList.add('active');
+            document.getElementById('customPresetLabel').textContent = `${minVal} - ${maxVal} mg/dL`;
+        }
+    }
+
+    function applyPreset(name) {
+        if (name === 'standard') {
+            document.getElementById('inputTargetMin').value = 70;
+            document.getElementById('inputTargetMax').value = 180;
+            document.getElementById('inputSevereLow').value = 54;
+            document.getElementById('inputSevereHigh').value = 250;
+        } else if (name === 'tight') {
+            document.getElementById('inputTargetMin').value = 63;
+            document.getElementById('inputTargetMax').value = 140;
+            document.getElementById('inputSevereLow').value = 50;
+            document.getElementById('inputSevereHigh').value = 200;
+        } else if (name === 'elderly') {
+            document.getElementById('inputTargetMin').value = 80;
+            document.getElementById('inputTargetMax').value = 200;
+            document.getElementById('inputSevereLow').value = 60;
+            document.getElementById('inputSevereHigh').value = 270;
+        }
+        onRangeInputChange();
+    }
+
+    function saveTargetRange() {
+        const minVal = parseInt(document.getElementById('inputTargetMin').value, 10);
+        const maxVal = parseInt(document.getElementById('inputTargetMax').value, 10);
+        const sevLow = parseInt(document.getElementById('inputSevereLow').value, 10);
+        const sevHigh = parseInt(document.getElementById('inputSevereHigh').value, 10);
+
+        const errBox = document.getElementById('rangeErrorBox');
+        const errText = document.getElementById('rangeErrorText');
+        const isAr = currentLang === 'ar';
+
+        if (isNaN(minVal) || isNaN(maxVal) || isNaN(sevLow) || isNaN(sevHigh)) {
+            errText.textContent = isAr ? 'يرجى إدخال قيم صحيحة لجميع الحقول.' : 'Please enter valid numerical values.';
+            errBox.style.display = 'block';
+            return;
+        }
+
+        if (minVal >= maxVal) {
+            errText.textContent = isAr ? 'الحد الأدنى يجب أن يكون أقل من الحد الأقصى!' : 'Target Min must be strictly less than Target Max!';
+            errBox.style.display = 'block';
+            return;
+        }
+
+        if (sevLow >= minVal) {
+            errText.textContent = isAr ? 'عتبة الهبوط الحاد يجب أن تكون أقل من الحد الأدنى للهدف!' : 'Severe Hypo threshold must be below Target Min!';
+            errBox.style.display = 'block';
+            return;
+        }
+
+        targetRange = { min: minVal, max: maxVal, severeLow: sevLow, severeHigh: sevHigh };
+        localStorage.setItem('accu_target_range', JSON.stringify(targetRange));
+
+        closeRangeModal();
+        updateTargetRangeUI();
+        loadDashboardData();
+    }
+
+    function resetRangeToDefault() {
+        targetRange = { ...defaultTargetRange };
+        localStorage.setItem('accu_target_range', JSON.stringify(targetRange));
+        updateRangeModalInputs();
+        closeRangeModal();
+        updateTargetRangeUI();
+        loadDashboardData();
+    }
+
+    // -------------------------------------------------------------
+    // Device & Driver Status
     // -------------------------------------------------------------
     async function checkDeviceStatus() {
         try {
@@ -1543,8 +1859,6 @@
             const message = document.getElementById('deviceMessage');
             const btnInstall = document.getElementById('btnInstallDriver');
             const btnSync = document.getElementById('btnSync');
-            const metaModel = document.getElementById('metaModel');
-            const metaSerial = document.getElementById('metaSerial');
 
             if (data.connected && data.driver_installed) {
                 banner.className = 'device-banner connected-ok';
@@ -1579,13 +1893,12 @@
     // -------------------------------------------------------------
     async function loadDashboardData() {
         try {
-            // Load raw data WITHOUT any automatic offset
-            const res = await fetch('/api/data?offset_years=0');
+            const query = `offset_years=0&target_min=${targetRange.min}&target_max=${targetRange.max}&severe_low=${targetRange.severeLow}&severe_high=${targetRange.severeHigh}`;
+            const res = await fetch(`/api/data?${query}`);
             const data = await res.json();
 
             rawRecords = data.records || [];
             
-            // Update device metadata if provided
             if (data.device) {
                 if (data.device.model) document.getElementById('metaModel').textContent = `Model: ${data.device.model}`;
                 if (data.device.serial) document.getElementById('metaSerial').textContent = `SN: ${data.device.serial}`;
@@ -1651,6 +1964,7 @@
     function updateKPIs(stats, isSynthetic) {
         if (!stats) return;
         const dict = i18n[currentLang];
+        const isAr = currentLang === 'ar';
 
         document.getElementById('kpiCount').textContent = stats.total_count || 0;
         document.getElementById('kpiDataSource').textContent = isSynthetic ? dict.data_source_demo : dict.data_source_meter;
@@ -1674,7 +1988,7 @@
         document.getElementById('kpiTir').innerHTML = `${tirPct} <span class="kpi-unit">%</span>`;
 
         document.getElementById('kpiHypo').textContent = stats.hypo_count || 0;
-        document.getElementById('kpiSevereHypo').textContent = `${stats.severe_hypo_count || 0} ${dict.kpi_severe_hypo}`;
+        document.getElementById('kpiSevereHypo').textContent = `${stats.severe_hypo_count || 0} ${isAr ? `هبوط حاد (< ${targetRange.severeLow} mg/dL)` : `Severe Hypo (< ${targetRange.severeLow} mg/dL)`}`;
     }
 
     // -------------------------------------------------------------
@@ -1685,7 +1999,6 @@
         const isAr = currentLang === 'ar';
         const dateLocale = isAr ? 'ar-EG' : 'en-US';
 
-        // Sort chronologically for timeline
         const sorted = [...records].sort((a, b) => (a.index ?? 0) - (b.index ?? 0));
 
         // 1. Timeline Chart
@@ -1696,10 +2009,10 @@
         const values = sorted.map(r => r.mg_dL);
 
         const pointColors = values.map(v => {
-            if (v < 54) return '#DC2626';
-            if (v < 70) return '#F97316';
-            if (v <= 180) return '#10B981';
-            if (v <= 250) return '#F59E0B';
+            if (v < targetRange.severeLow) return '#DC2626';
+            if (v < targetRange.min) return '#F97316';
+            if (v <= targetRange.max) return '#10B981';
+            if (v <= targetRange.severeHigh) return '#F59E0B';
             return '#B91C1C';
         });
 
@@ -1740,8 +2053,8 @@
                         ticks: { color: '#9CA3AF', maxTicksLimit: 10 }
                     },
                     y: {
-                        min: 40,
-                        max: Math.max(...values, 280) + 20,
+                        min: Math.min(40, targetRange.severeLow - 10),
+                        max: Math.max(...values, targetRange.severeHigh + 20),
                         grid: { color: 'rgba(255, 255, 255, 0.05)' },
                         ticks: { color: '#9CA3AF' }
                     }
@@ -1759,8 +2072,8 @@
             type: 'doughnut',
             data: {
                 labels: isAr ? 
-                    ['هبوط حاد (< 54)', 'هبوط (54-69)', 'ضمن الهدف (70-180)', 'مرتفع (181-250)', 'مرتفع جداً (> 250)'] :
-                    ['Severe Hypo (< 54)', 'Hypo (54-69)', 'In Target (70-180)', 'High (181-250)', 'Very High (> 250)'],
+                    [`هبوط حاد (< ${targetRange.severeLow})`, `هبوط (${targetRange.severeLow}-${targetRange.min - 1})`, `ضمن الهدف (${targetRange.min}-${targetRange.max})`, `مرتفع (${targetRange.max + 1}-${targetRange.severeHigh})`, `مرتفع جداً (> ${targetRange.severeHigh})`] :
+                    [`Severe Hypo (< ${targetRange.severeLow})`, `Hypo (${targetRange.severeLow}-${targetRange.min - 1})`, `In Target (${targetRange.min}-${targetRange.max})`, `High (${targetRange.max + 1}-${targetRange.severeHigh})`, `Severe High (> ${targetRange.severeHigh})`],
                 datasets: [{
                     data: [tir.very_low, tir.low, tir.in_range, tir.high, tir.very_high],
                     backgroundColor: ['#DC2626', '#F97316', '#10B981', '#F59E0B', '#991B1B'],
@@ -1780,23 +2093,23 @@
         const listEl = document.getElementById('tirBreakdownList');
         listEl.innerHTML = `
             <div class="tir-row">
-                <span class="tir-label"><span class="tir-dot" style="background: #10B981;"></span> ${isAr ? 'النطاق السليم (70-180)' : 'In Target (70-180)'}</span>
+                <span class="tir-label"><span class="tir-dot" style="background: #10B981;"></span> ${isAr ? `النطاق السليم (${targetRange.min}-${targetRange.max})` : `In Target (${targetRange.min}-${targetRange.max})`}</span>
                 <span class="tir-val" style="color: #34D399;">${tirPct.in_range}% (${tir.in_range})</span>
             </div>
             <div class="tir-row">
-                <span class="tir-label"><span class="tir-dot" style="background: #F97316;"></span> ${isAr ? 'هبوط (54-69)' : 'Low (54-69)'}</span>
+                <span class="tir-label"><span class="tir-dot" style="background: #F97316;"></span> ${isAr ? `هبوط (${targetRange.severeLow}-${targetRange.min - 1})` : `Low (${targetRange.severeLow}-${targetRange.min - 1})`}</span>
                 <span class="tir-val" style="color: #FDBA74;">${tirPct.low}% (${tir.low})</span>
             </div>
             <div class="tir-row">
-                <span class="tir-label"><span class="tir-dot" style="background: #DC2626;"></span> ${isAr ? 'هبوط حاد (< 54)' : 'Very Low (< 54)'}</span>
+                <span class="tir-label"><span class="tir-dot" style="background: #DC2626;"></span> ${isAr ? `هبوط حاد (< ${targetRange.severeLow})` : `Severe Hypo (< ${targetRange.severeLow})`}</span>
                 <span class="tir-val" style="color: #F87171;">${tirPct.very_low}% (${tir.very_low})</span>
             </div>
             <div class="tir-row">
-                <span class="tir-label"><span class="tir-dot" style="background: #F59E0B;"></span> ${isAr ? 'ارتفاع (181-250)' : 'High (181-250)'}</span>
+                <span class="tir-label"><span class="tir-dot" style="background: #F59E0B;"></span> ${isAr ? `ارتفاع (${targetRange.max + 1}-${targetRange.severeHigh})` : `High (${targetRange.max + 1}-${targetRange.severeHigh})`}</span>
                 <span class="tir-val" style="color: #FDE68A;">${tirPct.high}% (${tir.high})</span>
             </div>
             <div class="tir-row">
-                <span class="tir-label"><span class="tir-dot" style="background: #991B1B;"></span> ${isAr ? 'ارتفاع حاد (> 250)' : 'Very High (> 250)'}</span>
+                <span class="tir-label"><span class="tir-dot" style="background: #991B1B;"></span> ${isAr ? `ارتفاع حاد (> ${targetRange.severeHigh})` : `Severe High (> ${targetRange.severeHigh})`}</span>
                 <span class="tir-val" style="color: #FCA5A5;">${tirPct.very_high}% (${tir.very_high})</span>
             </div>
         `;
@@ -1881,11 +2194,10 @@
     }
 
     // -------------------------------------------------------------
-    // Advanced Data Sorting System (Clickable Columns + Quick Dropdown)
+    // Advanced Data Sorting System
     // -------------------------------------------------------------
     function handleSort(col) {
         if (sortColumn === col) {
-            // Toggle direction
             sortDirection = (sortDirection === 'desc') ? 'asc' : 'desc';
         } else {
             sortColumn = col;
@@ -1961,7 +2273,6 @@
             return;
         }
 
-        // Apply Sorting
         let sorted = [...records].sort((a, b) => {
             let valA, valB;
             if (sortColumn === 'index') {
@@ -1977,7 +2288,7 @@
                 valA = a.mmol_L ?? 0;
                 valB = b.mmol_L ?? 0;
             } else if (sortColumn === 'status') {
-                valA = a.mg_dL ?? 0; // Sort by glucose severity
+                valA = a.mg_dL ?? 0;
                 valB = b.mg_dL ?? 0;
             }
 
@@ -1988,12 +2299,12 @@
             }
         });
 
-        // Apply Category Filter
+        // Filter based on customized target range
         const filtered = sorted.filter(r => {
             const v = r.mg_dL;
-            if (currentFilter === 'hypo') return v < 70;
-            if (currentFilter === 'in_range') return v >= 70 && v <= 180;
-            if (currentFilter === 'hyper') return v > 180;
+            if (currentFilter === 'hypo') return v < targetRange.min;
+            if (currentFilter === 'in_range') return v >= targetRange.min && v <= targetRange.max;
+            if (currentFilter === 'hyper') return v > targetRange.max;
             return true;
         });
 
@@ -2009,11 +2320,22 @@
             
             let badgeClass = 'cat-in-range';
             let catName = dict.cat_in_range;
-            if (r.mg_dL < 54) { badgeClass = 'cat-very-low'; catName = dict.cat_very_low; }
-            else if (r.mg_dL < 70) { badgeClass = 'cat-low'; catName = dict.cat_low; }
-            else if (r.mg_dL <= 180) { badgeClass = 'cat-in-range'; catName = dict.cat_in_range; }
-            else if (r.mg_dL <= 250) { badgeClass = 'cat-high'; catName = dict.cat_high; }
-            else { badgeClass = 'cat-very-high'; catName = dict.cat_very_high; }
+            if (r.mg_dL < targetRange.severeLow) { 
+                badgeClass = 'cat-very-low'; 
+                catName = `${dict.cat_very_low} (< ${targetRange.severeLow})`; 
+            } else if (r.mg_dL < targetRange.min) { 
+                badgeClass = 'cat-low'; 
+                catName = `${dict.cat_low} (< ${targetRange.min})`; 
+            } else if (r.mg_dL <= targetRange.max) { 
+                badgeClass = 'cat-in-range'; 
+                catName = `${dict.cat_in_range} (${targetRange.min}-${targetRange.max})`; 
+            } else if (r.mg_dL <= targetRange.severeHigh) { 
+                badgeClass = 'cat-high'; 
+                catName = `${dict.cat_high} (> ${targetRange.max})`; 
+            } else { 
+                badgeClass = 'cat-very-high'; 
+                catName = `${dict.cat_very_high} (> ${targetRange.severeHigh})`; 
+            }
 
             return `
                 <tr>
@@ -2034,7 +2356,7 @@
     }
 
     // -------------------------------------------------------------
-    // Modal Controllers
+    // Modal Helpers
     // -------------------------------------------------------------
     function showDriverModal() { document.getElementById('driverModal').style.display = 'flex'; }
     function closeDriverModal() { document.getElementById('driverModal').style.display = 'none'; }
