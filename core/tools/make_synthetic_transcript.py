@@ -60,7 +60,7 @@ PAIRING_REQUEST_HEX = (
 )
 
 #: Resposta à ação GET_INFO (422 bytes), com os 4 segmentos do PM-Store
-#: (Gluc, Ctrl, Err, Meal). As 3 marcas de tempo que aparecem فيها são
+#: (Gluc, Ctrl, Err, Meal). As 3 marcas de tempo que aparecem nele são
 #: substituídas pelas do dataset sintético — no aparelho real elas são a
 #: Resposta a GET_INFO (422 bytes) com os 4 segmentos.
 ACTION_RESPONSE_HEX = (

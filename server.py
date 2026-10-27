@@ -72,7 +72,7 @@ def api_load_sample():
             sync_file.unlink()
         except Exception:
             pass
-    return jsonify({"success": True, "message": "تم تحميل البيانات النموذجية بنجاح."})
+    return jsonify({"success": True, "message": "Sample demonstration data loaded successfully."})
 
 @app.route("/api/export-csv")
 def api_export_csv():
@@ -89,15 +89,15 @@ def api_export_csv():
         mg = r.get("mg_dL", 0)
         mmol = r.get("mmol_L", round(mg / 18.0182, 2))
         if mg < 54:
-            cat = "هبوط حاد جداً (Very Low)"
+            cat = "Severe Hypo (< 54 mg/dL)"
         elif mg < target_min:
-            cat = f"هبوط (Low < {target_min})"
+            cat = f"Low (< {target_min} mg/dL)"
         elif mg <= target_max:
-            cat = f"النطاق المستهدف (In Range {target_min}-{target_max})"
+            cat = f"In Target Range ({target_min}-{target_max} mg/dL)"
         elif mg <= 250:
-            cat = f"ارتفاع (High > {target_max})"
+            cat = f"High (> {target_max} mg/dL)"
         else:
-            cat = "ارتفاع حاد جداً (Very High > 250)"
+            cat = "Severe Hyper (> 250 mg/dL)"
             
         writer.writerow([
             r.get("index", ""),
@@ -110,14 +110,14 @@ def api_export_csv():
         
     output.seek(0)
     return Response(
-        "\ufeff" + output.getvalue(), # UTF-8 BOM for Arabic support in Excel
+        "\ufeff" + output.getvalue(), # UTF-8 BOM for Excel support
         mimetype="text/csv",
         headers={"Content-Disposition": "attachment;filename=accu_chek_readings.csv"}
     )
 
 @app.route("/report")
 def serve_report():
-    return render_template("report_ar.html")
+    return render_template("report.html")
 
 if __name__ == "__main__":
     port = 5050

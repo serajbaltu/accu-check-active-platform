@@ -41,7 +41,7 @@ def check_windows_pnp_status() -> Dict[str, Any]:
                 "name": "Accu-Chek Active USB",
                 "instance_id": "VID_173A&PID_21CC",
                 "status": "OK",
-                "message": "جهاز Accu-Chek متصل وتعريف WinUSB جاهز للاتصال المباشر!"
+                "message": "Accu-Chek device connected and WinUSB driver is ready!"
             }
     except Exception:
         pass
@@ -57,7 +57,7 @@ def check_windows_pnp_status() -> Dict[str, Any]:
                     "driver_installed": False,
                     "name": None,
                     "status": "NOT_CONNECTED",
-                    "message": "جهاز Accu-Chek غير متصل بمنفذ USB."
+                    "message": "Accu-Chek meter is not connected to USB port."
                 }
             
             instance_name = winreg.EnumKey(k, 0)
@@ -82,7 +82,7 @@ def check_windows_pnp_status() -> Dict[str, Any]:
                         "name": desc,
                         "instance_id": instance_name,
                         "status": "NEED_DRIVER",
-                        "message": "الجهاز متصل بنجاح، ولكن يتطلب تثبيت تعريف WinUSB للتمكن من قراءة البيانات."
+                        "message": "Device connected via USB, but requires WinUSB driver installation."
                     }
                 else:
                     return {
@@ -92,7 +92,7 @@ def check_windows_pnp_status() -> Dict[str, Any]:
                         "instance_id": instance_name,
                         "status": "OK",
                         "service": service,
-                        "message": "الجهاز متصل وبرنامج التشغيل مثبت وجاهز للاستخدام."
+                        "message": "Device connected and driver is installed and ready."
                     }
 
     except FileNotFoundError:
@@ -101,7 +101,7 @@ def check_windows_pnp_status() -> Dict[str, Any]:
             "driver_installed": False,
             "name": None,
             "status": "NOT_CONNECTED",
-            "message": "جهاز Accu-Chek غير متصل بمنفذ USB."
+            "message": "Accu-Chek meter is not connected to USB port."
         }
     except Exception as e:
         return {
@@ -109,7 +109,7 @@ def check_windows_pnp_status() -> Dict[str, Any]:
             "driver_installed": False,
             "name": None,
             "status": "ERROR",
-            "message": f"خطأ أثناء فحص حالة الجهاز: {e}"
+            "message": f"Error querying device status: {e}"
         }
 
 
@@ -119,7 +119,7 @@ def launch_zadig_installer() -> Dict[str, Any]:
     """
     zadig_path = BASE_DIR / "zadig-2.9.exe"
     if not zadig_path.exists():
-        return {"success": False, "error": "ملف zadig-2.9.exe غير موجود."}
+        return {"success": False, "error": "zadig-2.9.exe file not found."}
         
     ps_cmd = f'Start-Process -FilePath "{zadig_path}" -Verb RunAs'
     try:
@@ -129,7 +129,7 @@ def launch_zadig_installer() -> Dict[str, Any]:
         )
         return {
             "success": True,
-            "message": "تم تشغيل مثبت التعريفات Zadig بنجاح. يرجى تأكيد إذن الإدارة ثم الضغط على Install Driver."
+            "message": "Zadig driver installer launched successfully. Please confirm administrator permission and click Install Driver."
         }
     except Exception as e:
         return {"success": False, "error": str(e)}
@@ -146,7 +146,7 @@ def read_device_records(timeout_ms: int = 10000, wait_seconds: int = 15) -> Dict
         from src.transfer import get_device_info, read_segment_entries
         from src.parser import parse_entries
     except ImportError as e:
-        return {"success": False, "error": f"تعذر استيراد مكتبات البروتوكول: {e}"}
+        return {"success": False, "error": f"Failed to import protocol libraries: {e}"}
 
     start_time = datetime.datetime.now()
     device = None
@@ -162,14 +162,14 @@ def read_device_records(timeout_ms: int = 10000, wait_seconds: int = 15) -> Dict
                 return {
                     "success": False,
                     "error": (
-                        "لم يتم العثور على الجهاز عبر USB. "
-                        "تأكد من: 1) تثبيت تعريف WinUSB، 2) توصيل الكابل وظهور كلمة 'PC' على شاشة الجهاز."
+                        "Device not found over USB. "
+                        "Ensure WinUSB driver is installed and 'PC' is shown on the meter screen."
                     )
                 }
             import time
             time.sleep(1.0)
         except Exception as e:
-            return {"success": False, "error": f"خطأ أثناء فتح الجهاز: {e}"}
+            return {"success": False, "error": f"Error opening device: {e}"}
 
     try:
         with device:
@@ -220,11 +220,11 @@ def read_device_records(timeout_ms: int = 10000, wait_seconds: int = 15) -> Dict
             return {
                 "success": True,
                 "data": data,
-                "message": f"تمت قراءة {len(records)} قياساً بنجاح من جهاز Accu-Chek Active!"
+                "message": f"Successfully read {len(records)} measurements from Accu-Chek Active meter!"
             }
 
     except Exception as e:
-        return {"success": False, "error": f"فشل أثناء سحب البيانات من الجهاز: {str(e)}"}
+        return {"success": False, "error": f"Failed to read data from meter: {str(e)}"}
 
 
 def apply_year_offset(records: List[Dict[str, Any]], offset_years: int) -> List[Dict[str, Any]]:

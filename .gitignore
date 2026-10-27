@@ -31,5 +31,6 @@ data/*.json
 !data/sample_data.json
 data/last_sync.json
 
-# Temporary logs
+# Temporary logs and scratch
 *.log
+scratch/

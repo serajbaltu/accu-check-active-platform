@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,8 +64,8 @@
             transition: var(--transition-smooth);
         }
 
-        html[lang="ar"] body { font-family: 'Cairo', system-ui, -apple-system, sans-serif; }
-        html[lang="en"] body { font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif; }
+        
+        body { font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif; }
 
         .container {
             max-width: 1440px;
@@ -915,37 +915,29 @@
                 <i class="fa-solid fa-heart-pulse"></i>
             </div>
             <div class="logo-text">
-                <h1>منصة <span id="brandName">ACCU-CHEK</span> لتحليل السكر</h1>
-                <p id="brandSubtitle">نظام القراءة والتحليل السريري المتقدم عبر USB (بروتوكول ISO/IEEE 11073-20601)</p>
+                <h1><span id="brandName">ACCU-CHEK</span> Glucose Analytics Platform</h1>
+                <p id="brandSubtitle">Advanced Clinical USB Health System (ISO/IEEE 11073-20601 Protocol)</p>
             </div>
         </div>
 
         <div class="header-actions">
-            <!-- Language Switcher -->
-            <div class="lang-switcher">
-                <button id="langBtnAr" class="lang-btn active" onclick="setLanguage('ar')">
-                    <span>🇸🇦</span> العربية
-                </button>
-                <button id="langBtnEn" class="lang-btn" onclick="setLanguage('en')">
-                    <span>🇬🇧</span> English
-                </button>
-            </div>
+
 
             <!-- Target Range Modifier Button -->
             <button class="btn btn-glass" onclick="showRangeModal()" id="btnTargetRange">
-                <i class="fa-solid fa-sliders"></i> <span data-i18n="btn_target_range">تعديل النطاق</span>
+                <i class="fa-solid fa-sliders"></i> <span data-i18n="btn_target_range">Target Range</span>
             </button>
             <button class="btn btn-glass" onclick="showTimeModal()" id="btnMeterClock">
-                <i class="fa-solid fa-clock"></i> <span data-i18n="btn_meter_clock">ضبط العداد</span>
+                <i class="fa-solid fa-clock"></i> <span data-i18n="btn_meter_clock">Meter Clock</span>
             </button>
             <button class="btn btn-glass" onclick="loadSampleData()" id="btnDemoData">
-                <i class="fa-solid fa-flask"></i> <span data-i18n="btn_demo_data">بيانات نموذجية</span>
+                <i class="fa-solid fa-flask"></i> <span data-i18n="btn_demo_data">Demo Data</span>
             </button>
             <a id="btnExportCsv" href="/api/export-csv" class="btn btn-glass">
-                <i class="fa-solid fa-file-excel"></i> <span data-i18n="btn_export_excel">تصدير Excel</span>
+                <i class="fa-solid fa-file-excel"></i> <span data-i18n="btn_export_excel">Export CSV / Excel</span>
             </a>
             <a id="btnReportLink" href="/report" target="_blank" class="btn btn-glass">
-                <i class="fa-solid fa-file-waveform"></i> <span data-i18n="btn_clinical_report">التقرير السريري</span>
+                <i class="fa-solid fa-file-waveform"></i> <span data-i18n="btn_clinical_report">Clinical Report</span>
             </a>
         </div>
     </header>
@@ -1019,11 +1011,11 @@
                 <div class="device-title-row">
                     <h2 id="deviceName">Roche Accu-Chek Active USB</h2>
                     <span id="deviceStatusPill" class="status-pill pill-warning">
-                        <i class="fa-solid fa-spinner fa-spin"></i> <span data-i18n="status_checking">جاري فحص الاتصال...</span>
+                        <i class="fa-solid fa-spinner fa-spin"></i> <span data-i18n="status_checking">Checking connection...</span>
                     </span>
                 </div>
                 <p id="deviceMessage" style="font-size: 13.5px; color: var(--text-secondary);">
-                    يتم التحقق من منفذ USB وحالة برامج التشغيل...
+                    Verifying USB port and driver status...
                 </p>
                 <div class="device-meta-badges">
                     <span class="device-badge"><i class="fa-solid fa-fingerprint"></i> <span id="metaModel">Model: 2102</span></span>
@@ -1036,10 +1028,10 @@
 
         <div class="device-banner-actions">
             <button id="btnInstallDriver" class="btn btn-primary" onclick="showDriverModal()" style="display: none;">
-                <i class="fa-solid fa-download"></i> <span data-i18n="btn_install_winusb">تثبيت برنامج تشغيل WinUSB</span>
+                <i class="fa-solid fa-download"></i> <span data-i18n="btn_install_winusb">Install WinUSB Driver</span>
             </button>
             <button id="btnSync" class="btn btn-emerald" onclick="syncDeviceData()">
-                <i class="fa-solid fa-rotate"></i> <span data-i18n="btn_sync_now">قراءة وسحب بيانات الجهاز الآن</span>
+                <i class="fa-solid fa-rotate"></i> <span data-i18n="btn_sync_now">Read & Sync Meter Data Now</span>
             </button>
         </div>
     </div>
@@ -1048,16 +1040,16 @@
     <div class="kpi-grid">
         <div class="kpi-card">
             <div class="kpi-card-header">
-                <span class="kpi-title" data-i18n="kpi_total_readings">إجمالي القياسات المسجلة</span>
+                <span class="kpi-title" data-i18n="kpi_total_readings">Total Logged Readings</span>
                 <div class="kpi-icon"><i class="fa-solid fa-calculator"></i></div>
             </div>
             <div class="kpi-value" id="kpiCount">--</div>
-            <div class="kpi-subtext" id="kpiDataSource">سجل ذاكرة الجهاز</div>
+            <div class="kpi-subtext" id="kpiDataSource">Internal Device Memory</div>
         </div>
 
         <div class="kpi-card">
             <div class="kpi-card-header">
-                <span class="kpi-title" data-i18n="kpi_mean_glucose">متوسط سكر الدم</span>
+                <span class="kpi-title" data-i18n="kpi_mean_glucose">Mean Blood Glucose</span>
                 <div class="kpi-icon" style="color: #34D399;"><i class="fa-solid fa-droplet"></i></div>
             </div>
             <div class="kpi-value" id="kpiMean">-- <span class="kpi-unit">mg/dL</span></div>
@@ -1066,38 +1058,38 @@
 
         <div class="kpi-card">
             <div class="kpi-card-header">
-                <span class="kpi-title" data-i18n="kpi_gmi_title">التراكمي التقديري (GMI)</span>
+                <span class="kpi-title" data-i18n="kpi_gmi_title">Estimated A1c (GMI)</span>
                 <div class="kpi-icon" style="color: #A78BFA;"><i class="fa-solid fa-dna"></i></div>
             </div>
             <div class="kpi-value" id="kpiGmi">-- <span class="kpi-unit">%</span></div>
-            <div class="kpi-subtext" data-i18n="kpi_gmi_desc">مؤشر إدارة الجلوكوز التقديري</div>
+            <div class="kpi-subtext" data-i18n="kpi_gmi_desc">Glucose Management Indicator</div>
         </div>
 
         <div class="kpi-card">
             <div class="kpi-card-header">
-                <span class="kpi-title" data-i18n="kpi_cv_title">معامل التباين (CV)</span>
+                <span class="kpi-title" data-i18n="kpi_cv_title">Coefficient of Variation (CV)</span>
                 <div class="kpi-icon" style="color: #FBBF24;"><i class="fa-solid fa-chart-line"></i></div>
             </div>
             <div class="kpi-value" id="kpiCv">-- <span class="kpi-unit">%</span></div>
-            <div class="kpi-subtext" id="kpiCvTarget">المستهدف السريري &le; 36%</div>
+            <div class="kpi-subtext" id="kpiCvTarget">Clinical Target &le; 36%</div>
         </div>
 
         <div class="kpi-card">
             <div class="kpi-card-header">
-                <span class="kpi-title" data-i18n="kpi_tir_title">الوقت في النطاق المستهدف (TIR)</span>
+                <span class="kpi-title" data-i18n="kpi_tir_title">Time in Target Range (TIR)</span>
                 <div class="kpi-icon" style="color: #10B981;"><i class="fa-solid fa-bullseye"></i></div>
             </div>
             <div class="kpi-value" id="kpiTir" style="color: #34D399;">-- <span class="kpi-unit">%</span></div>
-            <div class="kpi-subtext" id="kpiTirDesc">70 - 180 mg/dL (المستهدف &gt; 70%)</div>
+            <div class="kpi-subtext" id="kpiTirDesc">70 - 180 mg/dL (Target &gt; 70%)</div>
         </div>
 
         <div class="kpi-card">
             <div class="kpi-card-header">
-                <span class="kpi-title" data-i18n="kpi_hypo_title">حوادث الهبوط (&lt; 70)</span>
+                <span class="kpi-title" data-i18n="kpi_hypo_title">Hypoglycemia Events (&lt; 70)</span>
                 <div class="kpi-icon" style="color: #EF4444;"><i class="fa-solid fa-triangle-exclamation"></i></div>
             </div>
             <div class="kpi-value" id="kpiHypo" style="color: #F87171;">--</div>
-            <div class="kpi-subtext" id="kpiSevereHypo">-- هبوط حاد (&lt; 54 mg/dL)</div>
+            <div class="kpi-subtext" id="kpiSevereHypo">-- severe hypo (&lt; 54 mg/dL)</div>
         </div>
     </div>
 
@@ -1107,12 +1099,12 @@
             <div class="chart-header">
                 <div class="chart-title">
                     <i class="fa-solid fa-chart-area"></i>
-                    <span data-i18n="chart_timeline_title">مسار قراءات سكر الدم عبر الزمن (Timeline)</span>
+                    <span data-i18n="chart_timeline_title">Blood Glucose Chronological Timeline</span>
                 </div>
                 <div style="font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 10px;">
-                    <span><i class="fa-solid fa-circle" style="color: #10B981; font-size: 9px;"></i> <span id="legendTargetText">الهدف 70-180</span></span>
-                    <span><i class="fa-solid fa-circle" style="color: #F59E0B; font-size: 9px;"></i> <span id="legendHighText">ارتفاع &gt; 180</span></span>
-                    <span><i class="fa-solid fa-circle" style="color: #EF4444; font-size: 9px;"></i> <span id="legendLowText">هبوط &lt; 70</span></span>
+                    <span><i class="fa-solid fa-circle" style="color: #10B981; font-size: 9px;"></i> <span id="legendTargetText">Target 70-180</span></span>
+                    <span><i class="fa-solid fa-circle" style="color: #F59E0B; font-size: 9px;"></i> <span id="legendHighText">High &gt; 180</span></span>
+                    <span><i class="fa-solid fa-circle" style="color: #EF4444; font-size: 9px;"></i> <span id="legendLowText">Low &lt; 70</span></span>
                 </div>
             </div>
             <div class="chart-container">
@@ -1124,7 +1116,7 @@
             <div class="chart-header">
                 <div class="chart-title">
                     <i class="fa-solid fa-chart-pie"></i>
-                    <span data-i18n="chart_tir_title">توزيع الوقت في الهدف (TIR)</span>
+                    <span data-i18n="chart_tir_title">Time in Target Range (TIR)</span>
                 </div>
             </div>
             <div class="chart-container" style="height: 170px;">
@@ -1142,7 +1134,7 @@
             <div class="chart-header">
                 <div class="chart-title">
                     <i class="fa-solid fa-clock-rotate-left"></i>
-                    <span data-i18n="chart_agp_title">الملف اليومي التراكمي خلال 24 ساعة (AGP Profile)</span>
+                    <span data-i18n="chart_agp_title">24-Hour AGP Modal Profile</span>
                 </div>
             </div>
             <div class="chart-container">
@@ -1154,7 +1146,7 @@
             <div class="chart-header">
                 <div class="chart-title">
                     <i class="fa-solid fa-sun"></i>
-                    <span data-i18n="chart_slots_title">متوسط السكر حسب فترات اليوم والوجبات</span>
+                    <span data-i18n="chart_slots_title">Time of Day / Meal Pattern</span>
                 </div>
             </div>
             <div class="chart-container">
@@ -1168,29 +1160,29 @@
         <div class="table-header-bar">
             <div class="chart-title">
                 <i class="fa-solid fa-table-list"></i>
-                <span data-i18n="logbook_title">سجل القراءات التاريخية المفصلة (Logbook)</span>
+                <span data-i18n="logbook_title">Medical Logbook & History</span>
             </div>
 
             <div class="table-controls">
                 <!-- Quick Sort Dropdown -->
                 <div style="display: flex; align-items: center; gap: 8px;">
-                    <span style="font-size: 12px; color: var(--text-muted);"><i class="fa-solid fa-arrow-down-wide-short"></i> <span data-i18n="sort_label">الترتيب:</span></span>
+                    <span style="font-size: 12px; color: var(--text-muted);"><i class="fa-solid fa-arrow-down-wide-short"></i> <span data-i18n="sort_label">Sort:</span></span>
                     <select id="sortOrderSelect" onchange="changeSortDropdown(this.value)" style="background: #1F2937; color: white; border: 1px solid var(--border-subtle); border-radius: 6px; padding: 5px 10px; font-family: inherit; font-size: 12.5px; cursor: pointer;">
-                        <option value="index_desc" selected>التسلسل الفعلي بالذاكرة (Index - الأحدث أولاً)</option>
-                        <option value="index_asc">التسلسل الفعلي بالذاكرة (Index - الأقدم أولاً)</option>
-                        <option value="date_desc">التاريخ والوقت (الأحدث أولاً)</option>
-                        <option value="date_asc">التاريخ والوقت (الأقدم أولاً)</option>
-                        <option value="glucose_desc">القراءة: من الأعلى للأدنى (High to Low)</option>
-                        <option value="glucose_asc">القراءة: من الأدنى للأعلى (Low to High)</option>
+                        <option value="index_desc" selected>Memory Physical Sequence (Index - Newest First)</option>
+                        <option value="index_asc">Memory Physical Sequence (Index - Oldest First)</option>
+                        <option value="date_desc">Timestamp (Newest First)</option>
+                        <option value="date_asc">Timestamp (Oldest First)</option>
+                        <option value="glucose_desc">Glucose: High to Low</option>
+                        <option value="glucose_asc">Glucose: Low to High</option>
                     </select>
                 </div>
 
                 <!-- Category Filter Tabs -->
                 <div class="table-filter-tabs">
-                    <button class="filter-tab active" onclick="filterTable('all')" data-i18n="tab_all">الكل</button>
-                    <button class="filter-tab" onclick="filterTable('hypo')" data-i18n="tab_hypo">حالات الهبوط</button>
-                    <button class="filter-tab" onclick="filterTable('in_range')" data-i18n="tab_in_range">النطاق السليم</button>
-                    <button class="filter-tab" onclick="filterTable('hyper')" data-i18n="tab_hyper">حالات الارتفاع</button>
+                    <button class="filter-tab active" onclick="filterTable('all')" data-i18n="tab_all">All Readings</button>
+                    <button class="filter-tab" onclick="filterTable('hypo')" data-i18n="tab_hypo">Hypoglycemia</button>
+                    <button class="filter-tab" onclick="filterTable('in_range')" data-i18n="tab_in_range">In Target Range</button>
+                    <button class="filter-tab" onclick="filterTable('hyper')" data-i18n="tab_hyper">Hyperglycemia</button>
                 </div>
             </div>
         </div>
@@ -1201,43 +1193,43 @@
                     <tr>
                         <th class="sortable active-sort" onclick="handleSort('index')" id="th_index">
                             <div class="th-content">
-                                <span data-i18n="col_index"># التسلسل</span>
+                                <span data-i18n="col_index"># Memory Index</span>
                                 <span class="sort-icon" id="sort_icon_index">▼</span>
                             </div>
                         </th>
                         <th class="sortable" onclick="handleSort('timestamp')" id="th_timestamp">
                             <div class="th-content">
-                                <span data-i18n="col_datetime">التاريخ والوقت</span>
+                                <span data-i18n="col_datetime">Date & Time</span>
                                 <span class="sort-icon" id="sort_icon_timestamp">⇅</span>
                             </div>
                         </th>
                         <th class="sortable" onclick="handleSort('mg_dL')" id="th_mg_dL">
                             <div class="th-content">
-                                <span data-i18n="col_mgdl">القراءة (mg/dL)</span>
+                                <span data-i18n="col_mgdl">Glucose (mg/dL)</span>
                                 <span class="sort-icon" id="sort_icon_mg_dL">⇅</span>
                             </div>
                         </th>
                         <th class="sortable" onclick="handleSort('mmol_L')" id="th_mmol_L">
                             <div class="th-content">
-                                <span data-i18n="col_mmoll">القراءة (mmol/L)</span>
+                                <span data-i18n="col_mmoll">Glucose (mmol/L)</span>
                                 <span class="sort-icon" id="sort_icon_mmol_L">⇅</span>
                             </div>
                         </th>
                         <th class="sortable" onclick="handleSort('status')" id="th_status">
                             <div class="th-content">
-                                <span data-i18n="col_category">التصنيف السريري</span>
+                                <span data-i18n="col_category">Clinical Status</span>
                                 <span class="sort-icon" id="sort_icon_status">⇅</span>
                             </div>
                         </th>
                         <th>
-                            <span data-i18n="col_notes">ملاحظات الذاكرة</span>
+                            <span data-i18n="col_notes">Flags & Notes</span>
                         </th>
                     </tr>
                 </thead>
                 <tbody id="logbookTableBody">
                     <tr>
                         <td colspan="6" style="text-align: center; color: var(--text-muted); padding: 30px;" data-i18n="loading_logbook">
-                            جاري تحميل سجل البيانات...
+                            Loading meter logbook...
                         </td>
                     </tr>
                 </tbody>
@@ -1247,7 +1239,7 @@
 
     <!-- Footer -->
     <footer>
-        <p id="footerText">منصة إدارة أجهزة ACCU-CHEK &copy; 2026 - نظام القراءة والتحليل السريري المباشر عبر USB.</p>
+        <p id="footerText">ACCU-CHEK Diabetes Management Platform &copy; 2026 - Direct USB Clinical Diagnostics & Reporting.</p>
     </footer>
 </div>
 
@@ -1255,39 +1247,39 @@
 <div id="rangeModal" class="modal-overlay">
     <div class="modal-card">
         <div class="modal-header">
-            <h3><i class="fa-solid fa-sliders" style="color: #3B82F6;"></i> <span data-i18n="modal_range_title">تعديل نطاق سكر الدم المستهدف (TIR)</span></h3>
+            <h3><i class="fa-solid fa-sliders" style="color: #3B82F6;"></i> <span data-i18n="modal_range_title">Adjust Blood Glucose Target Range (TIR)</span></h3>
             <button onclick="closeRangeModal()" style="background: none; border: none; color: white; font-size: 20px; cursor: pointer;">&times;</button>
         </div>
 
         <div class="modal-body">
             <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 16px;" data-i18n="modal_range_desc">
-                حدد النطاق السريري المستهدف الموصى به من قبل طبيبك المعالج. سيتم تحديث كافة التحليلات، ونسب الوقت في الهدف (TIR)، وتصنيفات الجدول فوراً:
+                Define your recommended clinical target range as advised by your endocrinologist. All metrics, TIR percentages, and table classifications will recalculate instantly:
             </p>
 
             <!-- Presets -->
             <div class="preset-grid">
                 <div class="preset-card active" onclick="applyPreset('standard')" id="preset_standard">
-                    <div class="preset-title"><i class="fa-solid fa-award" style="color: #10B981;"></i> <span data-i18n="preset_std_title">المعيار الطبي العام (ADA)</span></div>
+                    <div class="preset-title"><i class="fa-solid fa-award" style="color: #10B981;"></i> <span data-i18n="preset_std_title">Standard Consensus (ADA)</span></div>
                     <div class="preset-range">70 - 180 mg/dL</div>
                     <div style="font-size: 11px; color: var(--text-muted);">3.9 - 10.0 mmol/L</div>
                 </div>
 
                 <div class="preset-card" onclick="applyPreset('tight')" id="preset_tight">
-                    <div class="preset-title"><i class="fa-solid fa-baby" style="color: #06B6D4;"></i> <span data-i18n="preset_tight_title">حمل / تحكم مكثف</span></div>
+                    <div class="preset-title"><i class="fa-solid fa-baby" style="color: #06B6D4;"></i> <span data-i18n="preset_tight_title">Pregnancy / Tight Control</span></div>
                     <div class="preset-range">63 - 140 mg/dL</div>
                     <div style="font-size: 11px; color: var(--text-muted);">3.5 - 7.8 mmol/L</div>
                 </div>
 
                 <div class="preset-card" onclick="applyPreset('elderly')" id="preset_elderly">
-                    <div class="preset-title"><i class="fa-solid fa-person-cane" style="color: #F59E0B;"></i> <span data-i18n="preset_eld_title">كبار السن / تجنب الهبوط</span></div>
+                    <div class="preset-title"><i class="fa-solid fa-person-cane" style="color: #F59E0B;"></i> <span data-i18n="preset_eld_title">Elderly / Hypo Prevention</span></div>
                     <div class="preset-range">80 - 200 mg/dL</div>
                     <div style="font-size: 11px; color: var(--text-muted);">4.4 - 11.1 mmol/L</div>
                 </div>
 
                 <div class="preset-card" onclick="applyPreset('custom')" id="preset_custom">
-                    <div class="preset-title"><i class="fa-solid fa-pen-to-square" style="color: #A78BFA;"></i> <span data-i18n="preset_custom_title">نطاق مخصص (Custom)</span></div>
-                    <div class="preset-range" id="customPresetLabel">حر ومخصص</div>
-                    <div style="font-size: 11px; color: var(--text-muted);" data-i18n="preset_custom_desc">تحديد يدوي مباشر</div>
+                    <div class="preset-title"><i class="fa-solid fa-pen-to-square" style="color: #A78BFA;"></i> <span data-i18n="preset_custom_title">Custom Target Range</span></div>
+                    <div class="preset-range" id="customPresetLabel">Custom</div>
+                    <div style="font-size: 11px; color: var(--text-muted);" data-i18n="preset_custom_desc">Manual threshold entry</div>
                 </div>
             </div>
 
@@ -1295,7 +1287,7 @@
             <div class="range-inputs-grid">
                 <div class="range-field">
                     <div class="range-label">
-                        <span data-i18n="label_target_min">الحد الأدنى للهدف (Min Target)</span>
+                        <span data-i18n="label_target_min">Minimum Target Threshold (Min)</span>
                         <span class="range-mmol-helper" id="minMmolHelper">3.9 mmol/L</span>
                     </div>
                     <div class="range-input-box">
@@ -1306,7 +1298,7 @@
 
                 <div class="range-field">
                     <div class="range-label">
-                        <span data-i18n="label_target_max">الحد الأقصى للهدف (Max Target)</span>
+                        <span data-i18n="label_target_max">Maximum Target Threshold (Max)</span>
                         <span class="range-mmol-helper" id="maxMmolHelper">10.0 mmol/L</span>
                     </div>
                     <div class="range-input-box">
@@ -1317,7 +1309,7 @@
 
                 <div class="range-field">
                     <div class="range-label">
-                        <span data-i18n="label_severe_low">عتبة الهبوط الحاد (Very Low)</span>
+                        <span data-i18n="label_severe_low">Severe Hypoglycemia Cutoff (Very Low)</span>
                         <span class="range-mmol-helper" id="sevLowMmolHelper">3.0 mmol/L</span>
                     </div>
                     <div class="range-input-box">
@@ -1328,7 +1320,7 @@
 
                 <div class="range-field">
                     <div class="range-label">
-                        <span data-i18n="label_severe_high">عتبة الارتفاع الحاد (Very High)</span>
+                        <span data-i18n="label_severe_high">Severe Hyperglycemia Cutoff (Very High)</span>
                         <span class="range-mmol-helper" id="sevHighMmolHelper">13.9 mmol/L</span>
                     </div>
                     <div class="range-input-box">
@@ -1339,17 +1331,17 @@
             </div>
 
             <div id="rangeErrorBox" style="display: none; background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 8px; padding: 10px 14px; font-size: 13px; color: #FCA5A5; margin-bottom: 16px;">
-                <i class="fa-solid fa-circle-exclamation"></i> <span id="rangeErrorText">يجب أن يكون الحد الأدنى أقل من الحد الأقصى.</span>
+                <i class="fa-solid fa-circle-exclamation"></i> <span id="rangeErrorText">Minimum target must be less than maximum target.</span>
             </div>
 
             <div style="display: flex; gap: 12px; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-subtle); padding-top: 18px;">
                 <button class="btn btn-glass" onclick="resetRangeToDefault()" style="font-size: 12.5px;">
-                    <i class="fa-solid fa-rotate-left"></i> <span data-i18n="btn_reset_default">استعادة الافتراضي</span>
+                    <i class="fa-solid fa-rotate-left"></i> <span data-i18n="btn_reset_default">Reset Defaults</span>
                 </button>
                 <div style="display: flex; gap: 10px;">
-                    <button class="btn btn-glass" onclick="closeRangeModal()" data-i18n="modal_btn_cancel">إلغاء</button>
+                    <button class="btn btn-glass" onclick="closeRangeModal()" data-i18n="modal_btn_cancel">Cancel</button>
                     <button class="btn btn-primary" onclick="saveTargetRange()">
-                        <i class="fa-solid fa-check"></i> <span data-i18n="btn_save_range">حفظ وتطبيق النطاق</span>
+                        <i class="fa-solid fa-check"></i> <span data-i18n="btn_save_range">Save & Apply Target Range</span>
                     </button>
                 </div>
             </div>
@@ -1361,34 +1353,34 @@
 <div id="driverModal" class="modal-overlay">
     <div class="modal-card">
         <div class="modal-header">
-            <h3><i class="fa-solid fa-wrench" style="color: #60A5FA;"></i> <span data-i18n="modal_driver_title">تثبيت برنامج تشغيل ACCU-CHEK (WinUSB)</span></h3>
+            <h3><i class="fa-solid fa-wrench" style="color: #60A5FA;"></i> <span data-i18n="modal_driver_title">Install ACCU-CHEK WinUSB Driver</span></h3>
             <button onclick="closeDriverModal()" style="background: none; border: none; color: white; font-size: 20px; cursor: pointer;">&times;</button>
         </div>
 
         <div class="modal-body">
             <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 18px;" data-i18n="modal_driver_desc">
-                جهاز <strong>Accu-Chek Active</strong> يعتمد بروتوكول الرعاية الصحية الشخصية <strong>PHDC (ISO/IEEE 11073-20601)</strong> عبر منفذ USB. لتمكين الويندوز من قراءة ذاكرة الجهاز مباشرة وبأعلى سرعة، يتم تثبيت مشغل <strong>WinUSB</strong> المعتمد من مايكروسوفت.
+                The <strong>Accu-Chek Active</strong> meter uses the USB Personal Healthcare Device Class <strong>(PHDC / ISO/IEEE 11073-20601)</strong>. To allow modern Windows applications to read from meter memory directly at maximum speed, Microsoft's <strong>WinUSB</strong> driver must be installed.
             </p>
 
             <div class="step-box">
-                <h4 data-i18n="modal_step1_title"><i class="fa-solid fa-1"></i> الخطوة الأولى: تشغيل مثبت التعريفات</h4>
-                <p data-i18n="modal_step1_desc">اضغط على الزر أدناه لتشغيل الأداة المعتمدة <strong>Zadig 2.9</strong> بصلاحيات المسؤول.</p>
+                <h4 data-i18n="modal_step1_title"><i class="fa-solid fa-1"></i> Step 1: Launch Driver Installer</h4>
+                <p data-i18n="modal_step1_desc">Click the button below to launch the pre-configured <strong>Zadig 2.9</strong> utility with administrator privileges.</p>
             </div>
 
             <div class="step-box">
-                <h4 data-i18n="modal_step2_title"><i class="fa-solid fa-2"></i> الخطوة الثانية: التأكيد والضغط على Install</h4>
-                <p data-i18n="modal_step2_desc">تم إعداد الأداة مسبقاً لتحديد جهاز <code>Accu-Chek Active USB</code> ومشغل <code>WinUSB</code> تلقائياً. كل ما عليك هو الضغط على الزر الكبير <strong>Install Driver</strong> (أو Replace Driver) في النافذة المنبثقة.</p>
+                <h4 data-i18n="modal_step2_title"><i class="fa-solid fa-2"></i> Step 2: Confirm and Click Install</h4>
+                <p data-i18n="modal_step2_desc">The utility is pre-configured to detect <code>Accu-Chek Active USB</code> and select <code>WinUSB</code>. Simply click the large <strong>Install Driver</strong> (or Replace Driver) button in the pop-up window.</p>
             </div>
 
             <div class="step-box">
-                <h4 data-i18n="modal_step3_title"><i class="fa-solid fa-3"></i> الخطوة الثالثة: اكتمال التثبيت</h4>
-                <p data-i18n="modal_step3_desc">خلال 5 ثوانٍ سيكتمل التثبيت، وسيتحول مؤشر الجهاز في هذه الصفحة إلى اللون الأخضر تلقائياً!</p>
+                <h4 data-i18n="modal_step3_title"><i class="fa-solid fa-3"></i> Step 3: Installation Complete</h4>
+                <p data-i18n="modal_step3_desc">Within seconds, driver installation will complete and the meter connection status on this page will turn green automatically!</p>
             </div>
 
             <div style="display: flex; gap: 12px; margin-top: 24px; justify-content: flex-end;">
-                <button class="btn btn-glass" onclick="closeDriverModal()" data-i18n="modal_btn_cancel">إلغاء</button>
+                <button class="btn btn-glass" onclick="closeDriverModal()" data-i18n="modal_btn_cancel">Cancel</button>
                 <button class="btn btn-primary" onclick="launchZadig()" id="btnLaunchZadig">
-                    <i class="fa-solid fa-bolt"></i> <span data-i18n="modal_btn_launch">تشغيل Zadig وتثبيت المشغل</span>
+                    <i class="fa-solid fa-bolt"></i> <span data-i18n="modal_btn_launch">Launch Zadig & Install Driver</span>
                 </button>
             </div>
         </div>
@@ -1399,35 +1391,35 @@
 <div id="timeModal" class="modal-overlay">
     <div class="modal-card">
         <div class="modal-header">
-            <h3><i class="fa-solid fa-clock" style="color: #34D399;"></i> <span data-i18n="modal_time_title">دليل ضبط توقيت وتاريخ جهاز ACCU-CHEK Active</span></h3>
+            <h3><i class="fa-solid fa-clock" style="color: #34D399;"></i> <span data-i18n="modal_time_title">ACCU-CHEK Active Clock Setup Guide</span></h3>
             <button onclick="closeTimeModal()" style="background: none; border: none; color: white; font-size: 20px; cursor: pointer;">&times;</button>
         </div>
 
         <div class="modal-body">
             <div style="background: rgba(59, 130, 246, 0.12); border-right: 4px solid #3B82F6; padding: 12px 16px; border-radius: var(--radius-md); font-size: 13.5px; margin-bottom: 18px; line-height: 1.5;" data-i18n="modal_time_notice">
-                <strong>تنبيه الأمان السريري:</strong> يعمل هذا البرنامج بوضع <strong>"القراءة الصارمة فقط (Read-Only)"</strong> المعتمد طبياً لحماية ذاكرة الجهاز من التلف أو العبث. ولذلك فإن ضبط ساعة وتاريخ العداد يتم مباشرة عبر أزرار الجهاز الفعلية باتباع الخطوات البسيطة التالية:
+                <strong>Clinical Safety Guarantee:</strong> This application operates in strict <strong>Read-Only</strong> mode to protect the device's certified medical memory from alteration or corruption. Meter clock and date settings are configured directly via physical buttons on the device following these steps:
             </div>
 
             <div class="step-box" style="border-inline-start-color: #10B981;">
-                <h4 data-i18n="modal_time_s1_title"><i class="fa-solid fa-1"></i> الخطوة الأولى: الدخول في وضع الضبط (Set-up)</h4>
-                <p data-i18n="modal_time_s1_desc">تأكد من أن الجهاز <strong>مطفأ</strong> ومنفصل عن كابل الـ USB. اضغط مطولاً على زر <strong>S</strong> (الموجود في الجانب أو الواجهة) لمدة <strong>أكثر من ثانيتين</strong> حتى تظهر كلمة <strong>Set-up</strong> على الشاشة ويبدأ وميض تنسيق الوقت (24h / 12h).</p>
+                <h4 data-i18n="modal_time_s1_title"><i class="fa-solid fa-1"></i> Step 1: Enter Set-up Mode</h4>
+                <p data-i18n="modal_time_s1_desc">Ensure the meter is <strong>turned off</strong> and unplugged from the USB cable. Press and hold the <strong>S</strong> button (on the front/side of the meter) for <strong>more than 2 seconds</strong> until <strong>Set-up</strong> appears on screen and the time format (24h/12h) blinks.</p>
             </div>
 
             <div class="step-box" style="border-inline-start-color: #3B82F6;">
-                <h4 data-i18n="modal_time_s2_title"><i class="fa-solid fa-2"></i> الخطوة الثانية: تعديل الوقت والتاريخ بأزرار الجهاز</h4>
+                <h4 data-i18n="modal_time_s2_title"><i class="fa-solid fa-2"></i> Step 2: Adjust Values Using Physical Buttons</h4>
                 <p data-i18n="modal_time_s2_desc">
-                    • اضغط زر <strong>M</strong> لتغيير القيمة أو زيادة الرقم.<br>
-                    • اضغط زر <strong>S</strong> لحفظ القيمة الحالية والانتقال للحقل التالي (الساعة &larr; الدقيقة &larr; السنة &larr; الشهر &larr; اليوم).
+                    • Press <strong>M</strong> to increment or change the selected value.<br>
+                    • Press <strong>S</strong> to save the value and advance to the next field (Hours &rarr; Minutes &rarr; Year &rarr; Month &rarr; Day).
                 </p>
             </div>
 
             <div class="step-box" style="border-inline-start-color: #A78BFA;">
-                <h4 data-i18n="modal_time_s3_title"><i class="fa-solid fa-3"></i> الخطوة الثالثة: الحفظ والخروج</h4>
-                <p data-i18n="modal_time_s3_desc">بعد ضبط اليوم، اضغط على الزرين <strong>S</strong> و <strong>M</strong> <strong>معاً في نفس اللحظة</strong> لحفظ كافة الإعدادات وسينطفئ الجهاز تلقائياً.</p>
+                <h4 data-i18n="modal_time_s3_title"><i class="fa-solid fa-3"></i> Step 3: Save and Exit</h4>
+                <p data-i18n="modal_time_s3_desc">After confirming the day, press both <strong>S</strong> and <strong>M</strong> buttons <strong>simultaneously</strong> to save all settings and turn off the device.</p>
             </div>
 
             <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
-                <button class="btn btn-primary" onclick="closeTimeModal()" data-i18n="modal_time_btn_done">فهمت ذلك، تم</button>
+                <button class="btn btn-primary" onclick="closeTimeModal()" data-i18n="modal_time_btn_done">Got it, Done</button>
             </div>
         </div>
     </div>
@@ -1441,94 +1433,6 @@
     // Comprehensive Bilingual Dictionary (Arabic & English)
     // -------------------------------------------------------------
     const i18n = {
-        ar: {
-            brand_title: "منصة <span id='brandName'>ACCU-CHEK</span> لتحليل السكر",
-            brand_sub: "نظام القراءة والتحليل السريري المتقدم عبر USB (بروتوكول ISO/IEEE 11073-20601)",
-            btn_target_range: "تعديل النطاق",
-            btn_meter_clock: "ضبط العداد",
-            btn_demo_data: "بيانات نموذجية",
-            btn_export_excel: "تصدير Excel",
-            btn_clinical_report: "التقرير السريري",
-            status_checking: "جاري فحص الاتصال...",
-            status_connected: "متصل وجاهز للقراءة",
-            status_need_driver: "بانتظار تثبيت التعريف",
-            status_disconnected: "غير متصل",
-            msg_connected: "الجهاز متصل بنجاح وتعريف WinUSB نشط. اضغط على 'قراءة وسحب بيانات الجهاز الآن'.",
-            msg_need_driver: "الجهاز متصل عبر USB، ولكن يتطلب تثبيت برنامج تشغيل WinUSB المعتمد.",
-            msg_disconnected: "يرجى توصيل جهاز ACCU-CHEK عبر كابل USB في منفذ الكمبيوتر، والتأكد من ظهور كلمة PC على شاشته.",
-            btn_install_winusb: "تثبيت برنامج تشغيل WinUSB",
-            btn_sync_now: "قراءة وسحب بيانات الجهاز الآن",
-            kpi_total_readings: "إجمالي القياسات المسجلة",
-            kpi_mean_glucose: "متوسط سكر الدم",
-            kpi_gmi_title: "التراكمي التقديري (GMI)",
-            kpi_gmi_desc: "مؤشر إدارة الجلوكوز التقديري",
-            kpi_cv_title: "معامل التباين (CV)",
-            kpi_cv_target: "المستهدف السريري ≤ 36%",
-            kpi_cv_stable: "مستقر سكرياً (≤ 36%)",
-            kpi_cv_unstable: "تذبذب سكري عالي (> 36%)",
-            kpi_tir_title: "الوقت في النطاق المستهدف (TIR)",
-            kpi_hypo_title: "حوادث الهبوط",
-            chart_timeline_title: "مسار قراءات سكر الدم عبر الزمن (Timeline)",
-            chart_tir_title: "توزيع الوقت في الهدف (TIR)",
-            chart_agp_title: "الملف اليومي التراكمي خلال 24 ساعة (AGP Profile)",
-            chart_slots_title: "متوسط السكر حسب فترات اليوم والوجبات",
-            logbook_title: "سجل القراءات التاريخية المفصلة (Logbook)",
-            sort_label: "الترتيب:",
-            tab_all: "الكل",
-            tab_hypo: "حالات الهبوط",
-            tab_in_range: "النطاق السليم",
-            tab_hyper: "حالات الارتفاع",
-            col_index: "# التسلسل",
-            col_datetime: "التاريخ والوقت",
-            col_mgdl: "القراءة (mg/dL)",
-            col_mmoll: "القراءة (mmol/L)",
-            col_category: "التصنيف السريري",
-            col_notes: "ملاحظات الذاكرة",
-            loading_logbook: "جاري تحميل سجل البيانات...",
-            no_records: "لا توجد قياسات مسجلة",
-            no_filtered_records: "لا توجد قياسات مطابقة للفلتر المحدد",
-            cat_very_low: "هبوط حاد جداً",
-            cat_low: "هبوط",
-            cat_in_range: "ضمن النطاق المستهدف",
-            cat_high: "ارتفاع",
-            cat_very_high: "ارتفاع حاد جداً",
-            notes_meter_memory: "مسجل بذاكرة العداد",
-            data_source_meter: "بيانات حقيقية من ذاكرة الجهاز",
-            data_source_demo: "بيانات توضيحية نموذجية",
-            modal_range_title: "تعديل نطاق سكر الدم المستهدف (TIR)",
-            modal_range_desc: "حدد النطاق السريري المستهدف الموصى به من قبل طبيبك المعالج. سيتم تحديث كافة التحليلات، ونسب الوقت في الهدف (TIR)، وتصنيفات الجدول فوراً:",
-            preset_std_title: "المعيار الطبي العام (ADA)",
-            preset_tight_title: "حمل / تحكم مكثف",
-            preset_eld_title: "كبار السن / تجنب الهبوط",
-            preset_custom_title: "نطاق مخصص (Custom)",
-            preset_custom_desc: "تحديد يدوي مباشر",
-            label_target_min: "الحد الأدنى للهدف (Min Target)",
-            label_target_max: "الحد الأقصى للهدف (Max Target)",
-            label_severe_low: "عتبة الهبوط الحاد (Very Low)",
-            label_severe_high: "عتبة الارتفاع الحاد (Very High)",
-            btn_reset_default: "استعادة الافتراضي",
-            btn_save_range: "حفظ وتطبيق النطاق",
-            modal_driver_title: "تثبيت برنامج تشغيل ACCU-CHEK (WinUSB)",
-            modal_driver_desc: "جهاز Accu-Chek Active يعتمد بروتوكول الرعاية الصحية الشخصية PHDC (ISO/IEEE 11073-20601) عبر منفذ USB. لتمكين الويندوز من قراءة ذاكرة الجهاز مباشرة وبأعلى سرعة، يتم تثبيت مشغل WinUSB المعتمد من مايكروسوفت.",
-            modal_step1_title: "الخطوة الأولى: تشغيل مثبت التعريفات",
-            modal_step1_desc: "اضغط على الزر أدناه لتشغيل الأداة المعتمدة Zadig 2.9 بصلاحيات المسؤول.",
-            modal_step2_title: "الخطوة الثانية: التأكيد والضغط على Install",
-            modal_step2_desc: "تم إعداد الأداة مسبقاً لتحديد جهاز Accu-Chek Active USB ومشغل WinUSB تلقائياً. كل ما عليك هو الضغط على الزر الكبير Install Driver (أو Replace Driver) في النافذة المنبثقة.",
-            modal_step3_title: "الخطوة الثالثة: اكتمال التثبيت",
-            modal_step3_desc: "خلال 5 ثوانٍ سيكتمل التثبيت، وسيتحول مؤشر الجهاز في هذه الصفحة إلى اللون الأخضر تلقائياً!",
-            modal_btn_cancel: "إلغاء",
-            modal_btn_launch: "تشغيل Zadig وتثبيت المشغل",
-            modal_time_title: "دليل ضبط توقيت وتاريخ جهاز ACCU-CHEK Active",
-            modal_time_notice: "تنبيه الأمان السريري: يعمل هذا البرنامج بوضع 'القراءة الصارمة فقط (Read-Only)' المعتمد طبياً لحماية ذاكرة الجهاز من التلف أو العبث. ولذلك فإن ضبط ساعة وتاريخ العداد يتم مباشرة عبر أزرار الجهاز الفعلية باتباع الخطوات البسيطة التالية:",
-            modal_time_s1_title: "الخطوة الأولى: الدخول في وضع الضبط (Set-up)",
-            modal_time_s1_desc: "تأكد من أن الجهاز مطفأ ومنفصل عن كابل الـ USB. اضغط مطولاً على زر S (الموجود في الجانب أو الواجهة) لمدة أكثر من ثانيتين حتى تظهر كلمة Set-up على الشاشة ويبدأ وميض تنسيق الوقت (24h / 12h).",
-            modal_time_s2_title: "الخطوة الثانية: تعديل الوقت والتاريخ بأزرار الجهاز",
-            modal_time_s2_desc: "• اضغط زر M لتغيير القيمة أو زيادة الرقم.<br>• اضغط زر S لحفظ القيمة الحالية والانتقال للحقل التالي (الساعة ← الدقيقة ← السنة ← الشهر ← اليوم).",
-            modal_time_s3_title: "الخطوة الثالثة: الحفظ والخروج",
-            modal_time_s3_desc: "بعد ضبط اليوم، اضغط على الزرين S و M معاً في نفس اللحظة لحفظ كافة الإعدادات وسينطفئ الجهاز تلقائياً.",
-            modal_time_btn_done: "فهمت ذلك، تم",
-            footer_text: "منصة إدارة أجهزة ACCU-CHEK © 2026 - نظام القراءة والتحليل السريري المباشر عبر USB."
-        },
         en: {
             brand_title: "<span id='brandName'>ACCU-CHEK</span> Glucose Analytics Platform",
             brand_sub: "Advanced Clinical USB Health System (ISO/IEEE 11073-20601 Protocol)",
@@ -1622,7 +1526,7 @@
     // -------------------------------------------------------------
     // Application State & Target Range
     // -------------------------------------------------------------
-    let currentLang = localStorage.getItem('accu_lang') || 'ar';
+    let currentLang = 'en';
     let rawRecords = [];
     let currentFilter = 'all';
     let sortColumn = 'index';
@@ -1647,8 +1551,8 @@
         document.documentElement.lang = lang;
         document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
 
-        document.getElementById('langBtnAr').classList.toggle('active', lang === 'ar');
-        document.getElementById('langBtnEn').classList.toggle('active', lang === 'en');
+        
+        
 
         const dict = i18n[lang];
         document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -1676,12 +1580,12 @@
         const select = document.getElementById('sortOrderSelect');
         if (!select) return;
         const isAr = currentLang === 'ar';
-        select.options[0].text = isAr ? 'التسلسل الفعلي بالذاكرة (Index - الأحدث أولاً)' : 'Memory Physical Index (Newest First)';
-        select.options[1].text = isAr ? 'التسلسل الفعلي بالذاكرة (Index - الأقدم أولاً)' : 'Memory Physical Index (Oldest First)';
-        select.options[2].text = isAr ? 'التاريخ والوقت (الأحدث أولاً)' : 'Timestamp (Newest First)';
-        select.options[3].text = isAr ? 'التاريخ والوقت (الأقدم أولاً)' : 'Timestamp (Oldest First)';
-        select.options[4].text = isAr ? 'القراءة: من الأعلى للأدنى (High to Low)' : 'Glucose: High to Low';
-        select.options[5].text = isAr ? 'القراءة: من الأدنى للأعلى (Low to High)' : 'Glucose: Low to High';
+        select.options[0].text = 'Memory Physical Index (Newest First)';
+        select.options[1].text = 'Memory Physical Index (Oldest First)';
+        select.options[2].text = 'Timestamp (Newest First)';
+        select.options[3].text = 'Timestamp (Oldest First)';
+        select.options[4].text = 'Glucose: High to Low';
+        select.options[5].text = 'Glucose: Low to High';
     }
 
     // -------------------------------------------------------------
@@ -1703,16 +1607,16 @@
         // Update KPI Card description
         const tirDesc = document.getElementById('kpiTirDesc');
         if (tirDesc) {
-            tirDesc.textContent = `${targetRange.min} - ${targetRange.max} mg/dL (${isAr ? 'المستهدف > 70%' : 'Target > 70%'})`;
+            tirDesc.textContent = `${targetRange.min} - ${targetRange.max} mg/dL (Target > 70%)`;
         }
 
         // Update Timeline Legend Text
         const legTarget = document.getElementById('legendTargetText');
         const legHigh = document.getElementById('legendHighText');
         const legLow = document.getElementById('legendLowText');
-        if (legTarget) legTarget.textContent = isAr ? `الهدف ${targetRange.min}-${targetRange.max}` : `Target ${targetRange.min}-${targetRange.max}`;
-        if (legHigh) legHigh.textContent = isAr ? `ارتفاع > ${targetRange.max}` : `High > ${targetRange.max}`;
-        if (legLow) legLow.textContent = isAr ? `هبوط < ${targetRange.min}` : `Low < ${targetRange.min}`;
+        if (legTarget) legTarget.textContent = `Target ${targetRange.min}-${targetRange.max}`;
+        if (legHigh) legHigh.textContent = `High > ${targetRange.max}`;
+        if (legLow) legLow.textContent = `Low < ${targetRange.min}`;
 
         // Update Export CSV Link
         const exportBtn = document.getElementById('btnExportCsv');
@@ -1811,19 +1715,19 @@
         const isAr = currentLang === 'ar';
 
         if (isNaN(minVal) || isNaN(maxVal) || isNaN(sevLow) || isNaN(sevHigh)) {
-            errText.textContent = isAr ? 'يرجى إدخال قيم صحيحة لجميع الحقول.' : 'Please enter valid numerical values.';
+            errText.textContent = 'Please enter valid numerical values.';
             errBox.style.display = 'block';
             return;
         }
 
         if (minVal >= maxVal) {
-            errText.textContent = isAr ? 'الحد الأدنى يجب أن يكون أقل من الحد الأقصى!' : 'Target Min must be strictly less than Target Max!';
+            errText.textContent = 'Target Min must be strictly less than Target Max!';
             errBox.style.display = 'block';
             return;
         }
 
         if (sevLow >= minVal) {
-            errText.textContent = isAr ? 'عتبة الهبوط الحاد يجب أن تكون أقل من الحد الأدنى للهدف!' : 'Severe Hypo threshold must be below Target Min!';
+            errText.textContent = 'Severe Hypo threshold must be below Target Min!';
             errBox.style.display = 'block';
             return;
         }
@@ -1916,7 +1820,7 @@
         const dict = i18n[currentLang];
         const btn = document.getElementById('btnSync');
         btn.classList.add('syncing-pulse');
-        btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> ${currentLang === 'ar' ? 'جاري الاتصال بالجهاز...' : 'Connecting to device...'}`;
+        btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Connecting to meter...`;
 
         try {
             const res = await fetch('/api/sync', { method: 'POST' });
@@ -1928,12 +1832,12 @@
                 alert(result.message);
                 loadDashboardData();
             } else {
-                alert((currentLang === 'ar' ? "تنبيه: " : "Notice: ") + result.error);
+                alert("Notice: " + result.error);
             }
         } catch (err) {
             btn.classList.remove('syncing-pulse');
             btn.innerHTML = `<i class="fa-solid fa-rotate"></i> <span>${dict.btn_sync_now}</span>`;
-            alert((currentLang === 'ar' ? "خطأ أثناء الاتصال: " : "Connection error: ") + err);
+            alert("Connection error: " + err);
         }
     }
 
@@ -1948,13 +1852,13 @@
             const res = await fetch('/api/install-driver', { method: 'POST' });
             const data = await res.json();
             if (data.success) {
-                alert(isAr ? "تم تشغيل مثبت التعريفات Zadig بنجاح!\nيرجى الموافقة على إذن الإدارة ثم الضغط على زر 'Install Driver' في نافذة البرنامج." : "Zadig driver installer launched!\nPlease grant Administrator permission and click 'Install Driver' in the Zadig window.");
+                alert("Zadig driver installer launched!\nPlease grant Administrator permission and click 'Install Driver' in the Zadig window.");
                 closeDriverModal();
             } else {
-                alert((isAr ? "تعذر تشغيل المثبت: " : "Failed to launch installer: ") + data.error);
+                alert("Failed to launch installer: " + data.error);
             }
         } catch (err) {
-            alert((isAr ? "حدث خطأ أثناء تشغيل الأداة: " : "Error running tool: ") + err);
+            alert("Error running tool: " + err);
         }
     }
 
@@ -1988,7 +1892,7 @@
         document.getElementById('kpiTir').innerHTML = `${tirPct} <span class="kpi-unit">%</span>`;
 
         document.getElementById('kpiHypo').textContent = stats.hypo_count || 0;
-        document.getElementById('kpiSevereHypo').textContent = `${stats.severe_hypo_count || 0} ${isAr ? `هبوط حاد (< ${targetRange.severeLow} mg/dL)` : `Severe Hypo (< ${targetRange.severeLow} mg/dL)`}`;
+        document.getElementById('kpiSevereHypo').textContent = `${stats.severe_hypo_count || 0} Severe Hypo (< ${targetRange.severeLow} mg/dL)`;
     }
 
     // -------------------------------------------------------------
@@ -1997,7 +1901,7 @@
     function renderCharts(records, stats) {
         if (!records || records.length === 0) return;
         const isAr = currentLang === 'ar';
-        const dateLocale = isAr ? 'ar-EG' : 'en-US';
+        const dateLocale = 'en-US';
 
         const sorted = [...records].sort((a, b) => (a.index ?? 0) - (b.index ?? 0));
 
@@ -2023,7 +1927,7 @@
             data: {
                 labels: labels,
                 datasets: [{
-                    label: isAr ? 'سكر الدم (mg/dL)' : 'Blood Glucose (mg/dL)',
+                    label: 'Blood Glucose (mg/dL)',
                     data: values,
                     borderColor: '#3B82F6',
                     backgroundColor: 'rgba(59, 130, 246, 0.1)',
@@ -2071,9 +1975,13 @@
         tirDonutChartInstance = new Chart(ctxDonut, {
             type: 'doughnut',
             data: {
-                labels: isAr ? 
-                    [`هبوط حاد (< ${targetRange.severeLow})`, `هبوط (${targetRange.severeLow}-${targetRange.min - 1})`, `ضمن الهدف (${targetRange.min}-${targetRange.max})`, `مرتفع (${targetRange.max + 1}-${targetRange.severeHigh})`, `مرتفع جداً (> ${targetRange.severeHigh})`] :
-                    [`Severe Hypo (< ${targetRange.severeLow})`, `Hypo (${targetRange.severeLow}-${targetRange.min - 1})`, `In Target (${targetRange.min}-${targetRange.max})`, `High (${targetRange.max + 1}-${targetRange.severeHigh})`, `Severe High (> ${targetRange.severeHigh})`],
+                labels: [
+                    `Severe Hypo (< ${targetRange.severeLow})`,
+                    `Hypo (${targetRange.severeLow}-${targetRange.min - 1})`,
+                    `In Target (${targetRange.min}-${targetRange.max})`,
+                    `High (${targetRange.max + 1}-${targetRange.severeHigh})`,
+                    `Severe High (> ${targetRange.severeHigh})`
+                ],
                 datasets: [{
                     data: [tir.very_low, tir.low, tir.in_range, tir.high, tir.very_high],
                     backgroundColor: ['#DC2626', '#F97316', '#10B981', '#F59E0B', '#991B1B'],
@@ -2093,23 +2001,23 @@
         const listEl = document.getElementById('tirBreakdownList');
         listEl.innerHTML = `
             <div class="tir-row">
-                <span class="tir-label"><span class="tir-dot" style="background: #10B981;"></span> ${isAr ? `النطاق السليم (${targetRange.min}-${targetRange.max})` : `In Target (${targetRange.min}-${targetRange.max})`}</span>
+                <span class="tir-label"><span class="tir-dot" style="background: #10B981;"></span> In Target (${targetRange.min}-${targetRange.max})</span>
                 <span class="tir-val" style="color: #34D399;">${tirPct.in_range}% (${tir.in_range})</span>
             </div>
             <div class="tir-row">
-                <span class="tir-label"><span class="tir-dot" style="background: #F97316;"></span> ${isAr ? `هبوط (${targetRange.severeLow}-${targetRange.min - 1})` : `Low (${targetRange.severeLow}-${targetRange.min - 1})`}</span>
+                <span class="tir-label"><span class="tir-dot" style="background: #F97316;"></span> Low (${targetRange.severeLow}-${targetRange.min - 1})</span>
                 <span class="tir-val" style="color: #FDBA74;">${tirPct.low}% (${tir.low})</span>
             </div>
             <div class="tir-row">
-                <span class="tir-label"><span class="tir-dot" style="background: #DC2626;"></span> ${isAr ? `هبوط حاد (< ${targetRange.severeLow})` : `Severe Hypo (< ${targetRange.severeLow})`}</span>
+                <span class="tir-label"><span class="tir-dot" style="background: #DC2626;"></span> Severe Hypo (< ${targetRange.severeLow})</span>
                 <span class="tir-val" style="color: #F87171;">${tirPct.very_low}% (${tir.very_low})</span>
             </div>
             <div class="tir-row">
-                <span class="tir-label"><span class="tir-dot" style="background: #F59E0B;"></span> ${isAr ? `ارتفاع (${targetRange.max + 1}-${targetRange.severeHigh})` : `High (${targetRange.max + 1}-${targetRange.severeHigh})`}</span>
+                <span class="tir-label"><span class="tir-dot" style="background: #F59E0B;"></span> High (${targetRange.max + 1}-${targetRange.severeHigh})</span>
                 <span class="tir-val" style="color: #FDE68A;">${tirPct.high}% (${tir.high})</span>
             </div>
             <div class="tir-row">
-                <span class="tir-label"><span class="tir-dot" style="background: #991B1B;"></span> ${isAr ? `ارتفاع حاد (> ${targetRange.severeHigh})` : `Severe High (> ${targetRange.severeHigh})`}</span>
+                <span class="tir-label"><span class="tir-dot" style="background: #991B1B;"></span> Severe High (> ${targetRange.severeHigh})</span>
                 <span class="tir-val" style="color: #FCA5A5;">${tirPct.very_high}% (${tir.very_high})</span>
             </div>
         `;
@@ -2132,7 +2040,7 @@
             data: {
                 labels: hourLabels,
                 datasets: [{
-                    label: isAr ? 'متوسط السكر (mg/dL)' : 'Mean Glucose (mg/dL)',
+                    label: 'Mean Glucose (mg/dL)',
                     data: hourAverages,
                     backgroundColor: 'rgba(6, 182, 212, 0.4)',
                     borderColor: '#06B6D4',
@@ -2153,9 +2061,7 @@
 
         // 4. Time Slots Chart
         const slots = stats.time_slots || {};
-        const slotLabels = isAr ? 
-            ['الصباح (الريق)', 'الظهيرة', 'بعد الظهر', 'المساء', 'الليل'] :
-            ['Fasting / Morning', 'Midday', 'Afternoon', 'Evening', 'Night'];
+        const slotLabels = ['Fasting / Morning', 'Midday', 'Afternoon', 'Evening', 'Night'];
         const slotData = [
             slots.morning ? slots.morning.mean : 0,
             slots.midday ? slots.midday.mean : 0,
@@ -2171,7 +2077,7 @@
             data: {
                 labels: slotLabels,
                 datasets: [{
-                    label: isAr ? 'متوسط الفترة (mg/dL)' : 'Slot Mean (mg/dL)',
+                    label: 'Slot Mean (mg/dL)',
                     data: slotData,
                     borderColor: '#A78BFA',
                     backgroundColor: 'rgba(167, 139, 250, 0.15)',
@@ -2266,7 +2172,7 @@
         const tbody = document.getElementById('logbookTableBody');
         const dict = i18n[currentLang];
         const isAr = currentLang === 'ar';
-        const dateLocale = isAr ? 'ar-EG' : 'en-US';
+        const dateLocale = 'en-US';
 
         if (!records || records.length === 0) {
             tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-muted); padding: 30px;">${dict.no_records}</td></tr>`;

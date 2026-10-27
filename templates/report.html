@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinical Blood Glucose Monitoring Report | ACCU-CHEK Active</title>
+    <!-- Google Fonts: Outfit & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-page: #0D1117;
+            --bg-surface: #161B22;
+            --border-color: #30363D;
+            --text-main: #F0F6FC;
+            --text-muted: #8B949E;
+            --primary: #2563EB;
+            --emerald: #10B981;
+            --amber: #F59E0B;
+            --red: #EF4444;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', 'Inter', system-ui, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            padding: 24px;
+            line-height: 1.6;
+        }
+
+        .report-sheet {
+            max-width: 1040px;
+            margin: 0 auto;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 36px 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .action-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            font-family: inherit;
+            font-size: 13.5px;
+            font-weight: 600;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover { background: rgba(255, 255, 255, 0.1); }
+
+        .btn-primary {
+            background: #2563EB;
+            border-color: #2563EB;
+            color: white;
+        }
+
+        .btn-primary:hover { background: #1D4ED8; }
+
+        .clinic-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 28px;
+            padding-bottom: 24px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .clinic-brand h1 {
+            font-size: 22px;
+            font-weight: 800;
+            color: #60A5FA;
+            margin-bottom: 4px;
+        }
+
+        .clinic-brand p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .report-meta-box {
+            text-align: right;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .patient-card {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 28px;
+        }
+
+        .patient-field span {
+            display: block;
+            font-size: 11.5px;
+            color: var(--text-muted);
+            margin-bottom: 2px;
+        }
+
+        .patient-field strong {
+            font-size: 14.5px;
+            color: var(--text-main);
+        }
+
+        .kpi-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+
+        .kpi-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 14px;
+            text-align: center;
+        }
+
+        .kpi-box .title {
+            font-size: 11.5px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .kpi-box .val {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .kpi-box .sub {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .section-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #93C5FD;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tir-report-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 28px;
+        }
+
+        table.tir-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        table.tir-table th, table.tir-table td {
+            padding: 8px 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        table.tir-table th {
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .chart-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 28px;
+            height: 260px;
+        }
+
+        .table-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 28px;
+        }
+
+        table.logbook {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12.5px;
+            text-align: left;
+        }
+
+        table.logbook th {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px 14px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        table.logbook td {
+            padding: 10px 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .notes-area {
+            border: 1px dashed var(--border-color);
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin-top: 10px;
+        }
+
+        .notes-area h4 {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        @media print {
+            body { background: white; color: black; padding: 0; }
+            .action-bar { display: none; }
+            .report-sheet { border: none; box-shadow: none; padding: 10px; max-width: 100%; }
+            .clinic-brand h1 { color: #1E40AF; }
+            .patient-card, .kpi-box, .tir-report-row, .chart-box, .table-box { background: white !important; border-color: #E5E7EB !important; color: black !important; }
+            .kpi-box .val, strong { color: black !important; }
+            table.logbook th { background: #F3F4F6 !important; color: black !important; }
+            table.logbook td { border-bottom-color: #E5E7EB !important; color: black !important; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="report-sheet">
+    <!-- Top Action Bar -->
+    <div class="action-bar">
+        <a href="/" class="btn"><i class="fa-solid fa-arrow-left"></i> Back to Dashboard</a>
+        <button class="btn btn-primary" onclick="window.print()"><i class="fa-solid fa-print"></i> Print Clinical Report</button>
+    </div>
+
+    <!-- Clinic Header -->
+    <div class="clinic-header">
+        <div class="clinic-brand">
+            <h1>ACCU-CHEK Active Clinical Monitoring Report</h1>
+            <p>Ambulatory Glycemic Profile & Consensus Time In Range (TIR)</p>
+        </div>
+        <div class="report-meta-box">
+            <div><strong>Report Date:</strong> <span id="repDate">--</span></div>
+            <div><strong>Protocol:</strong> ISO/IEEE 11073-20601 (USB PHDC)</div>
+            <div><strong>Device:</strong> <span id="repModel">Accu-Chek Active</span></div>
+        </div>
+    </div>
+
+    <!-- Patient & Device Metadata -->
+    <div class="patient-card">
+        <div class="patient-field">
+            <span>Patient Name:</span>
+            <strong>Self-Monitoring Record</strong>
+        </div>
+        <div class="patient-field">
+            <span>Meter Serial Number:</span>
+            <strong id="repSerial">--</strong>
+        </div>
+        <div class="patient-field">
+            <span>Total Logged Tests:</span>
+            <strong id="repCount">--</strong>
+        </div>
+        <div class="patient-field">
+            <span>Clinical Target:</span>
+            <strong id="repTargetRange">70 - 180 mg/dL</strong>
+        </div>
+    </div>
+
+    <!-- KPI Summary Grid -->
+    <div class="kpi-summary-grid">
+        <div class="kpi-box">
+            <div class="title">Total Readings</div>
+            <div class="val" id="metCount">--</div>
+            <div class="sub">Meter Memory</div>
+        </div>
+        <div class="kpi-box">
+            <div class="title">Mean Glucose</div>
+            <div class="val" id="metMean">--</div>
+            <div class="sub" id="metMeanMmol">-- mmol/L</div>
+        </div>
+        <div class="kpi-box">
+            <div class="title">Estimated A1c (GMI)</div>
+            <div class="val" id="metGmi" style="color: #A78BFA;">--%</div>
+            <div class="sub">Glucose Mgmt Indicator</div>
+        </div>
+        <div class="kpi-box">
+            <div class="title">Variability (CV %)</div>
+            <div class="val" id="metCv">--%</div>
+            <div class="sub" id="metCvTarget">Target ≤ 36%</div>
+        </div>
+        <div class="kpi-box">
+            <div class="title">Time In Range (TIR)</div>
+            <div class="val" id="metTir" style="color: #34D399;">--%</div>
+            <div class="sub">Target > 70%</div>
+        </div>
+    </div>
+
+    <!-- Section: TIR Breakdown -->
+    <div class="section-title">
+        <i class="fa-solid fa-bullseye"></i>
+        International Consensus Time In Range (TIR)
+    </div>
+    <div class="tir-report-row">
+        <div>
+            <table class="tir-table">
+                <thead>
+                    <tr>
+                        <th>Clinical Band</th>
+                        <th>Threshold (mg/dL)</th>
+                        <th>Consensus Target</th>
+                        <th>Observed % (Count)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="color: #34D399; font-weight: 600;">In Target Range</td>
+                        <td id="tirRowTarget">70 - 180</td>
+                        <td>&gt; 70%</td>
+                        <td id="tirTargetVal" style="font-weight: 700;">--</td>
+                    </tr>
+                    <tr>
+                        <td style="color: #FB923C; font-weight: 600;">Hypoglycemia (Low)</td>
+                        <td id="tirRowLow">54 - 69</td>
+                        <td>&lt; 4%</td>
+                        <td id="tirLowVal" style="font-weight: 700;">--</td>
+                    </tr>
+                    <tr>
+                        <td style="color: #F87171; font-weight: 600;">Severe Hypo (Very Low)</td>
+                        <td id="tirRowVeryLow">&lt; 54</td>
+                        <td>&lt; 1%</td>
+                        <td id="tirVeryLowVal" style="font-weight: 700;">--</td>
+                    </tr>
+                    <tr>
+                        <td style="color: #FBBF24; font-weight: 600;">Hyperglycemia (High)</td>
+                        <td id="tirRowHigh">181 - 250</td>
+                        <td>&lt; 25%</td>
+                        <td id="tirHighVal" style="font-weight: 700;">--</td>
+                    </tr>
+                    <tr>
+                        <td style="color: #FCA5A5; font-weight: 600;">Severe Hyper (Very High)</td>
+                        <td id="tirRowVeryHigh">&gt; 250</td>
+                        <td>&lt; 5%</td>
+                        <td id="tirVeryHighVal" style="font-weight: 700;">--</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="height: 180px; position: relative;">
+            <canvas id="repDonutChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Section: Timeline Trend -->
+    <div class="section-title">
+        <i class="fa-solid fa-chart-line"></i>
+        Longitudinal Blood Glucose Trend Timeline (mg/dL)
+    </div>
+    <div class="chart-box">
+        <canvas id="repTimelineChart"></canvas>
+    </div>
+
+    <!-- Section: Recent Logbook -->
+    <div class="section-title">
+        <i class="fa-solid fa-list-check"></i>
+        Detailed Chronological Logbook
+    </div>
+    <div class="table-box">
+        <table class="logbook">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Date & Time</th>
+                    <th>Glucose (mg/dL)</th>
+                    <th>Glucose (mmol/L)</th>
+                    <th>Clinical Category</th>
+                </tr>
+            </thead>
+            <tbody id="repTableBody">
+                <tr><td colspan="5" style="text-align: center; padding: 20px;">Loading readings...</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Doctor Notes Area -->
+    <div class="notes-area">
+        <h4>Attending Physician Notes & Therapeutic Recommendations:</h4>
+        <p style="color: var(--text-muted); font-size: 13px;">..........................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................</p>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", async () => {
+        try {
+            const urlParams = new URLSearchParams(window.location.search);
+            const targetMin = urlParams.get("target_min") || 70;
+            const targetMax = urlParams.get("target_max") || 180;
+            const res = await fetch(`/api/data?offset_years=0&target_min=${targetMin}&target_max=${targetMax}`);
+            const data = await res.json();
+            renderReport(data, targetMin, targetMax);
+        } catch (err) {
+            console.error("Report fetch error:", err);
+        }
+    });
+
+    function renderReport(data, targetMin, targetMax) {
+        const dev = data.device || {};
+        const stats = data.analytics || {};
+        const records = data.records || [];
+
+        // Meta
+        document.getElementById('repModel').textContent = dev.model ? `Accu-Chek Active (${dev.model})` : 'Accu-Chek Active';
+        document.getElementById('repSerial').textContent = dev.serial || 'XXXXXXXXX';
+        document.getElementById('repDate').textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        document.getElementById('repCount').textContent = records.length;
+        document.getElementById('repTargetRange').textContent = `${targetMin} - ${targetMax} mg/dL`;
+
+        // Update Threshold Labels
+        document.getElementById('tirRowTarget').textContent = `${targetMin} - ${targetMax}`;
+        document.getElementById('tirRowLow').textContent = `54 - ${targetMin - 1}`;
+        document.getElementById('tirRowHigh').textContent = `${parseInt(targetMax) + 1} - 250`;
+
+        // Metrics
+        document.getElementById('metCount').textContent = stats.total_count || 0;
+        document.getElementById('metMean').textContent = stats.mean_mg_dl || 0;
+        document.getElementById('metMeanMmol').textContent = `${stats.mean_mmol_l || 0} mmol/L`;
+        document.getElementById('metGmi').textContent = `${stats.gmi_percent || 0}%`;
+        document.getElementById('metCv').textContent = `${stats.cv_percent || 0}%`;
+        
+        const cvTarget = document.getElementById('metCvTarget');
+        if (stats.cv_target_met) {
+            cvTarget.textContent = 'Stable (≤ 36%)';
+            cvTarget.style.color = '#34D399';
+        } else {
+            cvTarget.textContent = 'High Variability (> 36%)';
+            cvTarget.style.color = '#F87171';
+        }
+
+        const tir = stats.tir || {};
+        const tirPct = stats.tir_percentages || {};
+        document.getElementById('metTir').textContent = `${tirPct.in_range || 0}%`;
+
+        // TIR values
+        document.getElementById('tirTargetVal').textContent = `${tirPct.in_range || 0}% (${tir.in_range || 0})`;
+        document.getElementById('tirLowVal').textContent = `${tirPct.low || 0}% (${tir.low || 0})`;
+        document.getElementById('tirVeryLowVal').textContent = `${tirPct.very_low || 0}% (${tir.very_low || 0})`;
+        document.getElementById('tirHighVal').textContent = `${tirPct.high || 0}% (${tir.high || 0})`;
+        document.getElementById('tirVeryHighVal').textContent = `${tirPct.very_high || 0}% (${tir.very_high || 0})`;
+
+        // Donut Chart
+        const ctxDonut = document.getElementById('repDonutChart').getContext('2d');
+        new Chart(ctxDonut, {
+            type: 'doughnut',
+            data: {
+                labels: ['Severe Hypo', 'Hypo', 'In Target', 'High', 'Very High'],
+                datasets: [{
+                    data: [tir.very_low || 0, tir.low || 0, tir.in_range || 0, tir.high || 0, tir.very_high || 0],
+                    backgroundColor: ['#DC2626', '#F97316', '#10B981', '#F59E0B', '#991B1B'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: { legend: { display: false } }
+            }
+        });
+
+        // Timeline Chart
+        const sorted = [...records].sort((a, b) => (a.index ?? 0) - (b.index ?? 0));
+        const labels = sorted.map(r => {
+            const dt = new Date(r.timestamp);
+            return dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+        });
+        const values = sorted.map(r => r.mg_dL);
+        const pointColors = values.map(v => {
+            if (v < 54) return '#DC2626';
+            if (v < targetMin) return '#F97316';
+            if (v <= targetMax) return '#10B981';
+            if (v <= 250) return '#F59E0B';
+            return '#B91C1C';
+        });
+
+        const ctxTimeline = document.getElementById('repTimelineChart').getContext('2d');
+        new Chart(ctxTimeline, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: values,
+                    borderColor: '#2563EB',
+                    backgroundColor: 'rgba(37, 99, 235, 0.08)',
+                    pointBackgroundColor: pointColors,
+                    pointRadius: 3,
+                    borderWidth: 1.5,
+                    tension: 0.2,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { ticks: { color: '#8B949E', maxTicksLimit: 12 }, grid: { display: false } },
+                    y: { ticks: { color: '#8B949E' }, grid: { color: 'rgba(255, 255, 255, 0.05)' } }
+                }
+            }
+        });
+
+        // Logbook
+        const tbody = document.getElementById('repTableBody');
+        tbody.innerHTML = sorted.map(r => {
+            const dt = new Date(r.timestamp);
+            const dateStr = dt.toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+            
+            let cat = 'In Target';
+            let color = '#10B981';
+            if (r.mg_dL < 54) { cat = 'Severe Hypo (< 54)'; color = '#EF4444'; }
+            else if (r.mg_dL < targetMin) { cat = `Hypo (< ${targetMin})`; color = '#F97316'; }
+            else if (r.mg_dL <= targetMax) { cat = 'In Target Range'; color = '#10B981'; }
+            else if (r.mg_dL <= 250) { cat = `Hyper (> ${targetMax})`; color = '#F59E0B'; }
+            else { cat = 'Severe Hyper (> 250)'; color = '#DC2626'; }
+
+            return `
+                <tr>
+                    <td style="font-weight: 700; color: #60A5FA;">#${r.index}</td>
+                    <td>${dateStr}</td>
+                    <td style="font-weight: 800;">${r.mg_dL}</td>
+                    <td>${r.mmol_L}</td>
+                    <td style="color: ${color}; font-weight: 600;">${cat}</td>
+                </tr>
+            `;
+        }).join('');
+    }
+</script>
+
+</body>
+</html>
